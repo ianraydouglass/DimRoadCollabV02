@@ -9,6 +9,7 @@ public class Interactable : MonoBehaviour
     public bool isSifted;
     public bool isDebris;
     public bool isAnchored;
+    public bool isItem;
     public int breakLevel = 1;
     public Rigidbody body;
     public GameEvent simpleInteraction;
@@ -114,6 +115,15 @@ public class Interactable : MonoBehaviour
             thisCollider.enabled = true;
             body.constraints = RigidbodyConstraints.None;
             DropThis();
+        }
+    }
+
+    public void AddToInventory()
+    {
+        //so something more sophisticated with this at a later date
+        if (isItem)
+        {
+            Destroy(this.gameObject);
         }
     }
 }

@@ -59,6 +59,9 @@ namespace StarterAssets
 		[Tooltip("How far in degrees can you move the camera down")]
 		public float BottomClamp = -90.0f;
 
+		//added by Ian on 122922
+		public InventoryManager inventoryManager;
+
 		//added by Ian on 070722
 		public float maxRayDist = 3f;
 		public bool canInteract = true;
@@ -513,6 +516,15 @@ namespace StarterAssets
 					//they have to hold press to break it or pack it
 					return;
                 }
+				if (handler.isItem == true)
+                {
+					print("add item to inventory");
+					if (inventoryManager)
+                    {
+						inventoryManager.AddToInventory(interactionTarget.GetComponent<ItemObject>().gameItem);
+					}
+					handler.AddToInventory();
+				}
 				else
                 {
 					forbiddenAction.Raise();
@@ -523,6 +535,27 @@ namespace StarterAssets
 
 		public void OnInteractL()
         {
+			if (interactionTarget != null && hoistedObject == null && canInteract == true)
+            {
+				Interactable handler = interactionTarget.GetComponent<Interactable>();
+				if (handler == null)
+				{
+					Debug.Log("tried to interact with an object that doesn't have the Interactable script attached");
+					forbiddenAction.Raise();
+					return;
+				}
+				if (handler.isItem == true)
+				{
+					print("add item to inventory");
+					if (inventoryManager)
+					{
+						inventoryManager.AddToInventory(interactionTarget.GetComponent<ItemObject>().gameItem);
+					}
+					handler.AddToInventory();
+				}
+
+			}
+			
 			print("intaractL pressed");
 		}
 
@@ -593,6 +626,14 @@ namespace StarterAssets
 			if (isTesting == true)
             {
 				breakEvent.Raise();
+            }
+        }
+
+		public void OnDropTest()
+        {
+			if (inventoryManager)
+            {
+				inventoryManager.DropItem(hoistPosition.transform.position);
             }
         }
 		
