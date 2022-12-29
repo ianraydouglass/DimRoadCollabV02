@@ -1,0 +1,15 @@
+newmtl TrashTop1
+map_Kd C:/Users/iannw/Documents/Unity Project Files/The Dim Road v2/Assets/Marerials/Textures/Retro Modified/trashcubeTopBottomRotated.png
+Kd 1 1 1
+d 1
+
+newmtl TrashFront1
+map_Kd C:/Users/iannw/Documents/Unity Project Files/The Dim Road v2/Assets/Marerials/Textures/Retro Modified/trashcubeFrontBack.png
+Kd 1 1 1
+d 1
+
+newmtl TrashR1
+map_Kd C:/Users/iannw/Documents/Unity Project Files/The Dim Road v2/Assets/Marerials/Textures/Retro Modified/trashcubeLeftRight.png
+Kd 1 1 1
+d 1
+

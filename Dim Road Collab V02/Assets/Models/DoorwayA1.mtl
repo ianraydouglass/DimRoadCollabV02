@@ -1,0 +1,25 @@
+newmtl GStone
+map_Kd C:/Users/iannw/Documents/Unity Project Files/The Dim Road v2/Assets/Marerials/Textures/Retro Modified/STONE_1AMedium.png
+Kd 1 1 1
+d 1
+
+newmtl RibbedProfile
+map_Kd C:/Users/iannw/Documents/Unity Project Files/The Dim Road v2/Assets/Marerials/Textures/Retro Modified/ContinuousPanel3.png
+Kd 0.064 0.06269388 0.05877551
+d 1
+
+newmtl Strip1Horizontal
+map_Kd C:/Users/iannw/Documents/Unity Project Files/The Dim Road v2/Assets/Marerials/Textures/Retro Modified/PanelStrip1Horizontal.png
+Kd 1 1 1
+d 1
+
+newmtl Strip1Vertical
+map_Kd C:/Users/iannw/Documents/Unity Project Files/The Dim Road v2/Assets/Marerials/Textures/Retro Modified/PanelStrip1.png
+Kd 1 1 1
+d 1
+
+newmtl QuarterPanel1
+map_Kd C:/Users/iannw/Documents/Unity Project Files/The Dim Road v2/Assets/Marerials/Textures/Retro Modified/HalfPanel1.png
+Kd 1 1 1
+d 1
+

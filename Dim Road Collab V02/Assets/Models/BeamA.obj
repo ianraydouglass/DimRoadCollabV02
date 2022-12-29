@@ -1,0 +1,53 @@
+# ProBuilder 5.0.4
+# https://unity3d.com/unity/features/worldbuilding/probuilder
+# 7/28/2022 11:20:14 AM
+
+mtllib ./BeamA.mtl
+o BeamA
+
+g BeamA
+v -0.875 0 0.5
+v -1 0 0.5
+v -0.875 2 0.5
+v -1 2 0.5
+v -1 0 0
+v -1 2 0
+v -0.875 0 0
+v -0.875 2 0
+
+vt -0.875 0
+vt -1 0
+vt -0.875 2
+vt -1 2
+vt 0.5 0
+vt 0 0
+vt 0.5 2
+vt 0 2
+vt 1 0
+vt 0.875 0
+vt 1 2
+vt 0.875 2
+vt -0.5 0
+vt -0.5 2
+vt 0.875 0.5
+vt 1 0.5
+vt -0.875 0.5
+vt -1 0.5
+
+vn 0 0 1
+vn -1 0 0
+vn 0 0 -1
+vn 1 0 0
+vn 0 1 0
+vn 0 -1 0
+
+usemtl GreyStripL
+f 4/7/2 6/8/2 5/6/2 2/5/2
+f 8/8/4 3/14/4 1/13/4 7/6/4
+
+usemtl GreyStripS
+f 3/3/1 4/4/1 2/2/1 1/1/1
+f 6/11/3 8/12/3 7/10/3 5/9/3
+f 8/10/5 6/9/5 4/16/5 3/15/5
+f 1/17/6 2/18/6 5/2/6 7/1/6
+

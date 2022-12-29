@@ -1,0 +1,10 @@
+newmtl GreyStripL_Horizontal
+map_Kd C:/Users/iannw/Documents/Unity Project Files/The Dim Road v2/Assets/Marerials/Textures/Retro Modified/SUPPORT1ModifiedHorizontal.png
+Kd 1 1 1
+d 1
+
+newmtl GreyStripM
+map_Kd C:/Users/iannw/Documents/Unity Project Files/The Dim Road v2/Assets/Marerials/Textures/Retro Modified/16th StripsR.png
+Kd 1 1 1
+d 1
+

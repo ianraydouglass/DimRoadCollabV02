@@ -1,0 +1,20 @@
+newmtl GContinuous
+map_Kd C:/Users/iannw/Documents/Unity Project Files/The Dim Road v2/Assets/Marerials/Textures/Retro Modified/ContinuousPanel3.png
+Kd 1 1 1
+d 1
+
+newmtl OffWGlow
+map_Kd C:/Users/iannw/Documents/Unity Project Files/The Dim Road v2/Assets/Marerials/Textures/Retro Modified/ContinuousPanel3WhitenedR.png
+Kd 0.8113208 0.7802796 0.6250741
+d 1
+
+newmtl GreyStripL
+map_Kd C:/Users/iannw/Documents/Unity Project Files/The Dim Road v2/Assets/Marerials/Textures/Retro original/SUPPORT_1.png
+Kd 1 1 1
+d 1
+
+newmtl DGContinuous
+map_Kd C:/Users/iannw/Documents/Unity Project Files/The Dim Road v2/Assets/Marerials/Textures/Retro Modified/ContinuousPanel3.png
+Kd 0.2705882 0.282353 0.3019608
+d 1
+

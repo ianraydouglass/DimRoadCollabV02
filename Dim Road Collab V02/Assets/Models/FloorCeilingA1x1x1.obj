@@ -1,0 +1,49 @@
+# ProBuilder 5.0.4
+# https://unity3d.com/unity/features/worldbuilding/probuilder
+# 7/19/2022 11:36:18 AM
+
+mtllib ./FloorCeilingA1x1x1.mtl
+o FloorCeilingA1x1x1
+
+g FloorCeilingA1x1x1
+v 0 0.875 1
+v -1 0.875 1
+v 0 1.875 1
+v -1 1.875 1
+v -1 0.875 0
+v -1 1.875 0
+v 0 0.875 0
+v 0 1.875 0
+
+vt 0 0.875
+vt -1 0.875
+vt 0 1.875
+vt -1 1.875
+vt 1 0.875
+vt 1 1.875
+vt 0 1
+vt 1 1
+vt 0 0
+vt 1 0
+vt -1 0
+vt -1 1
+
+vn 0 0 1
+vn -1 0 0
+vn 0 0 -1
+vn 1 0 0
+vn 0 1 0
+vn 0 -1 0
+
+usemtl GFloorPanel1
+f 8/9/5 6/10/5 4/8/5 3/7/5
+
+usemtl GStone
+f 3/3/1 4/4/1 2/2/1 1/1/1
+f 4/6/2 6/3/2 5/1/2 2/5/2
+f 6/6/3 8/3/3 7/1/3 5/5/3
+f 8/3/4 3/4/4 1/2/4 7/1/4
+
+usemtl GreyStripL
+f 1/7/6 2/12/6 5/11/6 7/9/6
+

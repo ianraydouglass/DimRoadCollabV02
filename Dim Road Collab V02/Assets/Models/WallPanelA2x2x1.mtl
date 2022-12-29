@@ -1,0 +1,10 @@
+newmtl GreyPanel
+map_Kd SoloPanel.png
+Kd 1 1 1
+d 1
+
+newmtl GreyStripM
+map_Kd 16th StripsR.png
+Kd 1 1 1
+d 1
+

@@ -1,0 +1,10 @@
+newmtl GreyPanel
+map_Kd C:/Users/iannw/Documents/Unity Project Files/The Dim Road v2/Assets/Marerials/Textures/Retro Modified/SoloPanel.png
+Kd 1 1 1
+d 1
+
+newmtl GStone
+map_Kd C:/Users/iannw/Documents/Unity Project Files/The Dim Road v2/Assets/Marerials/Textures/Retro Modified/STONE_1AMedium.png
+Kd 1 1 1
+d 1
+

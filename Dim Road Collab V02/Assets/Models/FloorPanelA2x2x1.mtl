@@ -1,0 +1,10 @@
+newmtl GFloorPanel1
+map_Kd C:/Users/iannw/Documents/Unity Project Files/The Dim Road v2/Assets/Marerials/Textures/Retro original/FLOOR_1A.png
+Kd 1 1 1
+d 1
+
+newmtl GreyStripS_Horizontal
+map_Kd C:/Users/iannw/Documents/Unity Project Files/The Dim Road v2/Assets/Marerials/Textures/Retro Modified/32nd Strips.png
+Kd 1 1 1
+d 1
+

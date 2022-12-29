@@ -1,0 +1,10 @@
+newmtl RivetStripVertical1
+map_Kd C:/Users/iannw/Documents/Unity Project Files/The Dim Road v2/Assets/Marerials/Textures/Retro Modified/RIVET_vertical1.png
+Kd 1 1 1
+d 1
+
+newmtl GreyStripS
+map_Kd C:/Users/iannw/Documents/Unity Project Files/The Dim Road v2/Assets/Marerials/Textures/Retro Modified/32nd StripsR.png
+Kd 1 1 1
+d 1
+
