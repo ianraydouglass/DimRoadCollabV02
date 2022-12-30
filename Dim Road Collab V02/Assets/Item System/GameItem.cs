@@ -26,7 +26,10 @@ public class GameItem : ScriptableObject
 
     public void SetupItem()
     {
-        currentParts = defaultParts;
+        if (currentParts.Count ==0)
+        {
+            currentParts = defaultParts;
+        }
         int bulkCount = 0;
         int healthCount = 0;
         foreach (GamePart thisPart in defaultParts)
@@ -42,6 +45,13 @@ public class GameItem : ScriptableObject
         maxHealth = healthCount;
         currentHealth = healthCount;
 
+    }
+
+    public void CraftFromParts(List<GamePart> partsToAdd)
+    {
+        defaultParts = partsToAdd;
+        currentParts = partsToAdd;
+        RefreshItem();
     }
 
     public void RefreshItem()
@@ -186,6 +196,17 @@ public class GameItem : ScriptableObject
         {
             return displayName + " has no parts";
         }
+    }
+    public string TellHealth()
+    {
+        string healthText = currentHealth.ToString() + " / " + maxHealth.ToString();
+        return healthText;
+    }
+
+    public string TellDescription()
+    {
+        string description = "Item Traits: " + TellTraits() + "\nParts: " + TellParts() + "\nItem Health: " + TellHealth();
+        return description;
     }
 
     //when an item recieves damage, that's just a conduit for applying that damage to all of it's parts.

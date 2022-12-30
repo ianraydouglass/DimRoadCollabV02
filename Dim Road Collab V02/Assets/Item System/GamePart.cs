@@ -43,6 +43,17 @@ public class GamePart : ScriptableObject
     {
         return partTraits;
     }
+    public bool HasTrait(PartTrait trait)
+    {
+        if (partTraits.Contains(trait))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public string TellTraits()
     {
         string traitList = "";
