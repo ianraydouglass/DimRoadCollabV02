@@ -18,7 +18,7 @@ public class ItemPartHolder : MonoBehaviour
 
     }
 
-    public void SlotThis()
+    public void ViewItemCard()
     {
         if (isEndCap)
         {

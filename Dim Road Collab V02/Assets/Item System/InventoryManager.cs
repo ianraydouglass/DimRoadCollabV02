@@ -14,6 +14,7 @@ public class InventoryManager : MonoBehaviour
         if (item)
         {
             currentItems.Add(item);
+            item.SetupItem();
             NotifyAdd(item);
         }
     }
@@ -48,4 +49,18 @@ public class InventoryManager : MonoBehaviour
         string notifText = item.GetName() + " added to inventory.";
         notificationManager.DisplayNotification(item.GetSprite(), notifText);
     }
+
+    public List<GameItem> GetItemsWithPartTrait(PartTrait trait)
+    {
+        List<GameItem> itemsWithPartTrait = new List<GameItem>();
+        foreach (GameItem item in currentItems)
+        {
+            if (item.HasPartWithTrait(trait))
+            {
+                itemsWithPartTrait.Add(item);
+            }
+        }
+        return itemsWithPartTrait;
+    }
+
 }

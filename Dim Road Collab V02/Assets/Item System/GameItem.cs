@@ -223,4 +223,31 @@ public class GameItem : ScriptableObject
         }
     }
 
+    public bool HasPartWithTrait(PartTrait trait)
+    {
+        Debug.Log(displayName + " is being searched for parts with the trait: " + trait.GetName());
+        bool hasPartWithTrait = false;
+        foreach (GamePart part in currentParts)
+        {
+            if(part.HasTrait(trait))
+            {
+                hasPartWithTrait = true;
+            }
+        }
+        return hasPartWithTrait;
+    }
+
+    public List<GamePart> GetPartsWithTrait(PartTrait trait)
+    {
+        List<GamePart> getPartsWithTrait = new List<GamePart>();
+        foreach (GamePart part in currentParts)
+        {
+            if (part.HasTrait(trait))
+            {
+                getPartsWithTrait.Add(part);
+            }
+        }
+        return getPartsWithTrait;
+    }
+
 }

@@ -52,6 +52,14 @@ public class CraftingRecipe : ScriptableObject
         }
         return traitList;
     }
+    public int GetTraitCount()
+    {
+        return requiredTraits.Count;
+    }
+    public PartTrait GetTraitByIndex(int traitIndex)
+    {
+        return requiredTraits[traitIndex].requiredTrait;
+    }
 
     
 }

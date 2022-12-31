@@ -17,6 +17,7 @@ public class GamePart : ScriptableObject
     private int currentHealth = 10;
     [SerializeField]
     private List<PartTrait> partTraits = new List<PartTrait>();
+    private bool occupied = false;
 
 
     public string GetName()
@@ -45,15 +46,18 @@ public class GamePart : ScriptableObject
     }
     public bool HasTrait(PartTrait trait)
     {
-        if (partTraits.Contains(trait))
+        bool hasTrait = false;
+        Debug.Log(ToString() + " is being searched for the trait: " + trait.GetName());
+        foreach (PartTrait thisTrait in partTraits)
         {
-            return true;
+            if (thisTrait == trait)
+            {
+                hasTrait = true;
+            }
         }
-        else
-        {
-            return false;
-        }
+        return hasTrait;
     }
+        
     public string TellTraits()
     {
         string traitList = "";
@@ -70,6 +74,16 @@ public class GamePart : ScriptableObject
         {
             removalFlag = true;
         }
+    }
+
+    public bool IsOccupied()
+    {
+        return occupied;
+    }
+
+    public void SetLock(bool lockState)
+    {
+        occupied = lockState;
     }
 
 }

@@ -11,8 +11,8 @@ public class NotificationManager : MonoBehaviour
 
     public void DisplayNotification(Sprite sprite, string text)
     {
-        GameObject n = Instantiate(notification);
-        n.transform.parent = notificationPanel.transform;
+        GameObject n = Instantiate(notification, notificationPanel.transform);
+        //n.transform.parent = notificationPanel.transform;
         Notification notif = n.GetComponent<Notification>();
         notif.textBox.text = text;
         notif.image.sprite = sprite;

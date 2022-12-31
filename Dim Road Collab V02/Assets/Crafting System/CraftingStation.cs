@@ -15,4 +15,9 @@ public class CraftingStation : MonoBehaviour
             thisRecipe.ConfigureRecipe();
         }
     }
+    public void StationActive()
+    {
+        craftMenu.OpenCraftingMenu(stationRecipes);
+    }
+
 }

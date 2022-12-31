@@ -65,6 +65,7 @@ public class Interactable : MonoBehaviour
         if (simpleInteraction != null)
         {
             simpleInteraction.Raise();
+            BroadcastMessage("StationActive");
         }
         else
         {
