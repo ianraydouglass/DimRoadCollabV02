@@ -12,9 +12,38 @@ public class ItemPartHolder : MonoBehaviour
     public GameObject itemCard;
     public ItemCardHolder cardHolder;
     public bool isEndCap = false;
+    public bool isAccepted = false;
+
+
     
     void Start()
     {
+        image.color = new Color(255f, 255f, 255f);
+    }
+
+    public void PartColorCheck()
+    {
+        if (thisPart.IsOccupied())
+        {
+            image.color = new Color(253f, 140f, 87f);
+        }
+        else
+        {
+            image.color = new Color(255f, 255f, 255f);
+        }
+    }
+
+    public void AcceptPart()
+    {
+        thisPart.SetLock(true);
+        isAccepted = true;
+        image.color = new Color(87f, 234f, 253f);
+    }
+    public void UnAcceptPart()
+    {
+        thisPart.SetLock(false);
+        isAccepted = false;
+        PartColorCheck();
 
     }
 
@@ -22,6 +51,7 @@ public class ItemPartHolder : MonoBehaviour
     {
         if (isEndCap)
         {
+            Debug.Log("DisablingItemPreview");
             cardHolder.cardContents.SetActive(false);
         }
         else

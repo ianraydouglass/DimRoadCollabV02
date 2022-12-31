@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -110,6 +112,9 @@ namespace StarterAssets
 		public bool isTesting;
 		public GameEvent breakEvent;
 		public HudActionSender actionSender;
+		[Space(10)]
+		public EventSystem eventSystem;
+		public GameEvent pauseEvent;
 
 
 		// cinemachine
@@ -636,6 +641,34 @@ namespace StarterAssets
 				inventoryManager.DropItem(hoistPosition.transform.position);
             }
         }
+
+		public void OnPause()
+        {
+			HearMenuOpen();
+			pauseEvent.Raise();
+		}
+
+		public void HearUnPause()
+        {
+			HearMenuClose();
+		}
+
+		public void HearMenuOpen()
+        {
+			Cursor.lockState = CursorLockMode.None;
+			Cursor.visible = true;
+		}
+
+		public void HearMenuClose()
+        {
+			/*
+			GameObject eventObject = GameObject.Find("UI_EventSystem");
+			eventSystem = eventObject.GetComponent<EventSystem>();
+			EventSystem.current.SetSelectedGameObject(null);*/
+			Cursor.lockState = CursorLockMode.Locked;
+			Cursor.visible = false;
+		}
+
 		
 		//added by Ian D. on 071222
 		public void KnockBack(GameObject source)

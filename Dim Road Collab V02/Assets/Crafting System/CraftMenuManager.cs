@@ -25,11 +25,20 @@ public class CraftMenuManager : MonoBehaviour
     public GameObject partRow5;
     public GameObject currentPartRow;
     public int currentRowNumber;
+    public List<GameObject> currentRowItemParts = new List<GameObject>();
+    public List<GameObject> currentRowCells = new List<GameObject>();
     public PartTrait rowTrait;
     public List<GameItem> itemsFound;
     public List<GamePart> partsFound;
     public List<GameObject> allPartRows = new List<GameObject>();
     public List<CraftingRecipe> recipeCatalog = new List<CraftingRecipe>();
+    public GameEvent openMenu;
+    //zero represents the end-cap
+    private int row1Position = 0;
+    private int row2Position = 0;
+    private int row3Position = 0;
+    private int row4Position = 0;
+    private int row5Position = 0;
     void Start()
     {
         allPartRows.Add(partRow1);
@@ -47,10 +56,11 @@ public class CraftMenuManager : MonoBehaviour
 
     public void OpenCraftingMenu(List<CraftingRecipe> incomingRecipes)
     {
+        openMenu.Raise();
         craftMenuPanel.SetActive(true);
         recipeCatalog = incomingRecipes;
         PrepRecipe(recipeCatalog[0]);
-        ShiftFromRow(1);
+        ShiftFromRow();
         ShiftToRow(1);
     }
 
@@ -91,21 +101,30 @@ public class CraftMenuManager : MonoBehaviour
         }
     }
 
-    public void ShiftFromRow(int currentRow)
+    //this clears the contents of the row
+    public void ShiftFromRow()
     {
+        currentRowItemParts.Clear();
+        currentRowCells.Clear();
         foreach (Transform child in currentPartRow.transform)
         {
             GameObject.Destroy(child.gameObject);
         }
     }
+    //this populates the next row with your options
     public void ShiftToRow(int nextRow)
     {
-        if (nextRow >= rowCount)
+        if (nextRow > rowCount)
         {
             currentRowNumber = rowCount + 1;
         }
         else
         {
+            if (nextRow < 1)
+            {
+                nextRow = 1;
+                currentRowNumber = 1;
+            }
             int rowIndex = nextRow - 1;
             currentPartRow = allPartRows[rowIndex];
             rowTrait = currentRecipe.GetTraitByIndex(rowIndex);
@@ -125,21 +144,132 @@ public class CraftMenuManager : MonoBehaviour
 
                 }
             }
+            RefreshDisplayedItem(currentPartRow);
         }
+    }
+
+    public void ShiftRowRight()
+    {
+        //don't shift if there is only one icon, or if it's the confirm or cancel button
+        if (currentPartRow.transform.childCount <= 1)
+        {
+            return;
+        }
+        if (CheckRowPosition(currentPartRow) <= 0)
+        {
+            return;
+        }
+        RectTransform thisTransform = currentPartRow.GetComponent<RectTransform>();
+        float posX = thisTransform.anchoredPosition.x;
+        float posY = thisTransform.anchoredPosition.y;
+        thisTransform.anchoredPosition = new Vector2((posX + 37.5f), posY);
+        RefreshRowPosition(currentPartRow, -1);
+        RefreshDisplayedItem(currentPartRow);
+    }
+
+    public void ShiftRowLeft()
+    {
+        //don't shift if there is only one icon, or if it's the confirm or cancel button
+        if (currentPartRow.transform.childCount <= 1)
+        {
+            return;
+        }
+        if (CheckRowPosition(currentPartRow) >= (currentRowItemParts.Count))
+        {
+            return;
+        }
+        RectTransform thisTransform = currentPartRow.GetComponent<RectTransform>();
+        float posX = thisTransform.anchoredPosition.x;
+        float posY = thisTransform.anchoredPosition.y;
+        thisTransform.anchoredPosition = new Vector2((posX - 37.5f), posY);
+        RefreshRowPosition(currentPartRow, 1);
+        RefreshDisplayedItem(currentPartRow);
+    }
+
+    public void RefreshRowPosition(GameObject partRow, int moveValue)
+    {
+        if (partRow == partRow1)
+        {
+            row1Position = row1Position + moveValue;
+        }
+        if (partRow == partRow2)
+        {
+            row2Position = row2Position + moveValue;
+        }
+        if (partRow == partRow3)
+        {
+            row3Position = row3Position + moveValue;
+        }
+        if (partRow == partRow4)
+        {
+            row4Position = row4Position + moveValue;
+        }
+        if (partRow == partRow5)
+        {
+            row5Position = row5Position + moveValue;
+        }
+
+    }
+
+    public void RefreshDisplayedItem(GameObject partRow)
+    {
+        int currentPosition = CheckRowPosition(partRow);
+        GameObject currentItem = currentRowCells[currentPosition];
+        if(!currentItem)
+        {
+            Debug.Log("No current item found after row move");
+            return;
+        }
+        ItemPartHolder itemHolder = currentItem.GetComponent<ItemPartHolder>();
+        if (!itemHolder)
+        {
+            Debug.Log("No part holder found on item after move");
+            return;
+        }
+        itemHolder.ViewItemCard();
+    }
+
+    public int CheckRowPosition(GameObject partRow)
+    {
+        if (partRow == partRow1)
+        {
+            return row1Position;
+        }
+        if (partRow == partRow2)
+        {
+            return row2Position;
+        }
+        if (partRow == partRow3)
+        {
+            return row3Position;
+        }
+        if (partRow == partRow4)
+        {
+            return row4Position;
+        }
+        if (partRow == partRow5)
+        {
+            return row5Position;
+        }
+        return 6;
     }
 
     public void AddEndCap(GameObject partRow)
     {
         GameObject p = Instantiate(itemPartPrefab, partRow.transform);
+        currentRowCells.Add(p);
         p.GetComponent<Image>().enabled = false;
         //p.transform.SetParent(partRow.transform);
         ItemPartHolder ip = p.GetComponent<ItemPartHolder>();
+        ip.cardHolder = cardHolder;
         ip.isEndCap = true;
     }
 
     public void AddPart(GameObject partRow, GameItem hostItem, GamePart thisPart)
     {
         GameObject p = Instantiate(itemPartPrefab, partRow.transform);
+        currentRowItemParts.Add(p);
+        currentRowCells.Add(p);
         //p.transform.SetParent(partRow.transform);
         //p.transform.parent = partRow.transform;
         ItemPartHolder ip = p.GetComponent<ItemPartHolder>();
@@ -148,5 +278,6 @@ public class CraftMenuManager : MonoBehaviour
         ip.image.sprite = thisPart.GetSprite();
         ip.itemCard = itemCard;
         ip.cardHolder = cardHolder;
+        ip.PartColorCheck();
     }
 }
