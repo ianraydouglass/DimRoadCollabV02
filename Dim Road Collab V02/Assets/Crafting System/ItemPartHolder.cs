@@ -19,11 +19,20 @@ public class ItemPartHolder : MonoBehaviour
     void Start()
     {
         image.color = new Color(255f, 255f, 255f);
+        PartColorCheck();
     }
 
     public void PartColorCheck()
     {
-        if (thisPart.IsOccupied())
+        if (!thisPart)
+        {
+            return;
+        }
+        if (isAccepted)
+        {
+            image.color = new Color(87f, 234f, 253f);
+        }
+        else if (thisPart.IsOccupied())
         {
             image.color = new Color(253f, 140f, 87f);
         }
@@ -37,14 +46,17 @@ public class ItemPartHolder : MonoBehaviour
     {
         thisPart.SetLock(true);
         isAccepted = true;
-        image.color = new Color(87f, 234f, 253f);
+        PartColorCheck();
     }
     public void UnAcceptPart()
     {
-        thisPart.SetLock(false);
-        isAccepted = false;
-        PartColorCheck();
-
+        if(isAccepted)
+        {
+            thisPart.SetLock(false);
+            isAccepted = false;
+            PartColorCheck();
+        }
+        
     }
 
     public void ViewItemCard()

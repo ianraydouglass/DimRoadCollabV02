@@ -33,12 +33,17 @@ public class CraftMenuManager : MonoBehaviour
     public List<GameObject> allPartRows = new List<GameObject>();
     public List<CraftingRecipe> recipeCatalog = new List<CraftingRecipe>();
     public GameEvent openMenu;
+    public List<AcceptedPartHolder> acceptedParts;
+    public GameEvent conditionsMet;
+    public GameEvent conditionsNotMet;
+
     //zero represents the end-cap
     private int row1Position = 0;
     private int row2Position = 0;
     private int row3Position = 0;
     private int row4Position = 0;
     private int row5Position = 0;
+    private GameObject currentItem;
     void Start()
     {
         allPartRows.Add(partRow1);
@@ -51,7 +56,7 @@ public class CraftMenuManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void OpenCraftingMenu(List<CraftingRecipe> incomingRecipes)
@@ -66,6 +71,7 @@ public class CraftMenuManager : MonoBehaviour
 
     public void PrepRecipe(CraftingRecipe recipe)
     {
+        currentItem = null;
         currentRecipe = recipe;
         rowCount = recipe.GetTraitCount();
         partSlot1.SetActive(true);
@@ -78,27 +84,33 @@ public class CraftMenuManager : MonoBehaviour
         partRow3.SetActive(true);
         partRow4.SetActive(true);
         partRow5.SetActive(true);
+        row1Position = 0;
+        row2Position = 0;
+        row3Position = 0;
+        row4Position = 0;
+        row5Position = 0;
         currentPartRow = partRow1;
-        if (rowCount <=4)
+        if (rowCount <= 4)
         {
             partSlot5.SetActive(false);
             partRow5.SetActive(false);
         }
-        if (rowCount <=3)
+        if (rowCount <= 3)
         {
             partSlot4.SetActive(false);
             partRow4.SetActive(false);
         }
-        if (rowCount <=2)
+        if (rowCount <= 2)
         {
             partSlot3.SetActive(false);
             partRow3.SetActive(false);
         }
-        if (rowCount <=1)
+        if (rowCount <= 1)
         {
             partSlot2.SetActive(false);
             partRow2.SetActive(false);
         }
+        RefreshButtons();
     }
 
     //this clears the contents of the row
@@ -106,9 +118,14 @@ public class CraftMenuManager : MonoBehaviour
     {
         currentRowItemParts.Clear();
         currentRowCells.Clear();
+        currentItem = null;
         foreach (Transform child in currentPartRow.transform)
         {
             GameObject.Destroy(child.gameObject);
+        }
+        foreach (AcceptedPartHolder acceptedPart in acceptedParts)
+        {
+            acceptedPart.TogglePartVisibility(true);
         }
     }
     //this populates the next row with your options
@@ -125,6 +142,7 @@ public class CraftMenuManager : MonoBehaviour
                 nextRow = 1;
                 currentRowNumber = 1;
             }
+            currentRowNumber = nextRow;
             int rowIndex = nextRow - 1;
             currentPartRow = allPartRows[rowIndex];
             rowTrait = currentRecipe.GetTraitByIndex(rowIndex);
@@ -145,6 +163,7 @@ public class CraftMenuManager : MonoBehaviour
                 }
             }
             RefreshDisplayedItem(currentPartRow);
+            acceptedParts[rowIndex].TogglePartVisibility(false);
         }
     }
 
@@ -214,8 +233,8 @@ public class CraftMenuManager : MonoBehaviour
     public void RefreshDisplayedItem(GameObject partRow)
     {
         int currentPosition = CheckRowPosition(partRow);
-        GameObject currentItem = currentRowCells[currentPosition];
-        if(!currentItem)
+        currentItem = currentRowCells[currentPosition];
+        if (!currentItem)
         {
             Debug.Log("No current item found after row move");
             return;
@@ -227,6 +246,111 @@ public class CraftMenuManager : MonoBehaviour
             return;
         }
         itemHolder.ViewItemCard();
+    }
+    public void AcceptCurrentPart()
+    {
+        if(currentItem)
+        {
+            ItemPartHolder itemHolder = currentItem.GetComponent<ItemPartHolder>();
+            if(itemHolder.isEndCap)
+            {
+                return;
+            }
+            else
+            {
+                UnacceptPartInRow();
+                AcceptThisPart();
+            }
+        }
+        RefreshButtons();
+    }
+    public void UnacceptPartInRow()
+    {
+        
+        //unaccept whatever part is in the holder of that row
+        AcceptedPartHolder destinationHolder = acceptedParts[0];
+        foreach (AcceptedPartHolder acceptedPartHolder in acceptedParts)
+        {
+            if (acceptedPartHolder.GetRowValue() == currentRowNumber)
+            {
+                destinationHolder = acceptedPartHolder;
+            }
+        }
+        destinationHolder.UnacceptPart();
+
+        //unaccept all parts in row and in slot if there are any
+        currentPartRow.BroadcastMessage("UnacceptPart");
+        /*
+        foreach (Transform child in currentPartRow.transform)
+        {
+            GameObject tempObject = (child.gameObject);
+            ItemPartHolder tempHolder
+        }
+        */
+    }
+    public void AcceptThisPart()
+    {
+        if (acceptedParts.Count == 0)
+        {
+            Debug.Log("No accepted part holders on list");
+            return;
+        }
+        //accept the current item where it is
+        ItemPartHolder itemHolder = currentItem.GetComponent<ItemPartHolder>();
+        itemHolder.AcceptPart();
+
+        //figure out where to display the accepted item
+        int currentRowIndex = currentRowNumber - 1;
+        AcceptedPartHolder destinationHolder = acceptedParts[currentRowIndex];
+        GameObject acceptedPartDestination = destinationHolder.gameObject;
+        
+        //instantiate a copy of the holder at the destination
+        
+        GameObject p = Instantiate(itemPartPrefab, acceptedPartDestination.transform);
+        ItemPartHolder ip = p.GetComponent<ItemPartHolder>();
+        ip.hostItem = itemHolder.hostItem;
+        ip.thisPart = itemHolder.thisPart;
+        ip.image.sprite = itemHolder.thisPart.GetSprite();
+        ip.itemCard = itemCard;
+        ip.cardHolder = cardHolder;
+        ip.AcceptPart();
+        destinationHolder.SetPartAccept(p);
+
+        //it should hide it's version of the part as soon as its set
+
+    }
+
+    public bool PartsSatisfyRecipe()
+    {
+        //rowCount should always be the number of traits in the current recipe
+        //int traitsToSatisfy = currentRecipe.GetTraitCount();
+        //this loop should run a number of times equal to the row count
+        for (int i = 0; i < rowCount; i++)
+        {
+            PartTrait thisTrait = currentRecipe.GetTraitByIndex(i);
+            GamePart acceptedPart = acceptedParts[i].acceptedPart;
+            if (!acceptedPart)
+            {
+                return false;
+            }
+            if (!acceptedPart.HasTrait(thisTrait))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public void RefreshButtons()
+    {
+        if (PartsSatisfyRecipe())
+        {
+            conditionsMet.Raise();
+        }
+        else 
+        {
+            conditionsNotMet.Raise();                    
+        }
     }
 
     public int CheckRowPosition(GameObject partRow)
