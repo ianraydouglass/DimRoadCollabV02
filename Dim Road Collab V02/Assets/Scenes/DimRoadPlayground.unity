@@ -218,6 +218,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b537996a0c9fc0547afdca600ad85764, type: 2}
   - {fileID: 11400000, guid: 5b4f09f2ab6ff6642b989db4809529f1, type: 2}
   - {fileID: 11400000, guid: 726f47f18a251564a8cad7e39f20c41c, type: 2}
+  - {fileID: 11400000, guid: dbf223bb65cedd640a6e935e410978e1, type: 2}
   inventoryManager: {fileID: 35437853}
   scrapItem: {fileID: 11400000, guid: d3430be441dc75a468201080ba394062, type: 2}
 --- !u!114 &35437857

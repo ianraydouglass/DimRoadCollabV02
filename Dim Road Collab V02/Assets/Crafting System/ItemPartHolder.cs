@@ -59,7 +59,7 @@ public class ItemPartHolder : MonoBehaviour
     }
     public void UnAcceptPart()
     {
-        if (thisPart)
+        if (thisPart && isAccepted)
         {
             thisPart.SetLock(false);
         }
