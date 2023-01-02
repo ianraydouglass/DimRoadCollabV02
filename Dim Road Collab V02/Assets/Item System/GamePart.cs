@@ -17,6 +17,7 @@ public class GamePart : ScriptableObject
     private int currentHealth = 10;
     [SerializeField]
     private List<PartTrait> partTraits = new List<PartTrait>();
+    [SerializeField]
     private bool occupied = false;
 
 

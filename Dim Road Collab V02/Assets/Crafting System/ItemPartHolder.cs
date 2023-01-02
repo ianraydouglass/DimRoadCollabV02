@@ -13,12 +13,15 @@ public class ItemPartHolder : MonoBehaviour
     public ItemCardHolder cardHolder;
     public bool isEndCap = false;
     public bool isAccepted = false;
+    private Color acceptedColor = new Color32(87, 234, 253, 255);
+    private Color occupiedColor = new Color32(253, 140, 87, 255);
+    private Color startingColor = new Color32(255, 255, 255, 255);
 
 
-    
+
     void Start()
     {
-        image.color = new Color(255f, 255f, 255f);
+        //image.color = new Color(255f, 255f, 255f);
         PartColorCheck();
     }
 
@@ -30,15 +33,17 @@ public class ItemPartHolder : MonoBehaviour
         }
         if (isAccepted)
         {
-            image.color = new Color(87f, 234f, 253f);
+            Debug.Log("setting color to accept");
+            GetComponent<Image>().color = acceptedColor;
         }
         else if (thisPart.IsOccupied())
         {
-            image.color = new Color(253f, 140f, 87f);
+            Debug.Log("setting color to occupied");
+            GetComponent<Image>().color = occupiedColor;
         }
         else
         {
-            image.color = new Color(255f, 255f, 255f);
+            GetComponent<Image>().color = startingColor;
         }
     }
 
@@ -50,13 +55,14 @@ public class ItemPartHolder : MonoBehaviour
     }
     public void UnAcceptPart()
     {
-        if(isAccepted)
+        if (thisPart)
         {
             thisPart.SetLock(false);
-            isAccepted = false;
-            PartColorCheck();
         }
+        isAccepted = false;
         
+        PartColorCheck();
+
     }
 
     public void ViewItemCard()

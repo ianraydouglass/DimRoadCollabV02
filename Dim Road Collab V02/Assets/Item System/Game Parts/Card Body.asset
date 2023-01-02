@@ -18,3 +18,4 @@ MonoBehaviour:
   partTraits:
   - {fileID: 11400000, guid: c3dcc2c1c17b4144d9ed45a02f4e8e62, type: 2}
   - {fileID: 11400000, guid: 3240d058d133e4246a62dd7b757000d2, type: 2}
+  occupied: 0

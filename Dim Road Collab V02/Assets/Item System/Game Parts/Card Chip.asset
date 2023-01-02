@@ -17,3 +17,4 @@ MonoBehaviour:
   maxHealth: 10
   partTraits:
   - {fileID: 11400000, guid: 85737fe06f2e4804cbe613ba969f32cb, type: 2}
+  occupied: 0

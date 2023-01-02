@@ -254,7 +254,8 @@ public class CraftMenuManager : MonoBehaviour
             ItemPartHolder itemHolder = currentItem.GetComponent<ItemPartHolder>();
             if(itemHolder.isEndCap)
             {
-                return;
+                UnacceptPartInRow();
+                
             }
             else
             {
