@@ -26,14 +26,14 @@ public class GameItem : ScriptableObject
 
     public void SetupItem()
     {
-        if (currentParts.Count ==0)
-        {
-            currentParts = defaultParts;
-        }
+        
         int bulkCount = 0;
         int healthCount = 0;
+        currentParts.Clear();
         foreach (GamePart thisPart in defaultParts)
         {
+            GamePart partCopy = Instantiate(thisPart) as GamePart;
+            currentParts.Add(partCopy);
             bulkCount += thisPart.GetBulk();
             healthCount += thisPart.GetMaxHealth();
         }
@@ -49,7 +49,7 @@ public class GameItem : ScriptableObject
 
     public void CraftFromParts(List<GamePart> partsToAdd)
     {
-        defaultParts = partsToAdd;
+        
         currentParts = partsToAdd;
         RefreshItem();
     }

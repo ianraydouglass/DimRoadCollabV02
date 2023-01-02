@@ -49,7 +49,11 @@ public class ItemPartHolder : MonoBehaviour
 
     public void AcceptPart()
     {
-        thisPart.SetLock(true);
+        if (thisPart)
+        {
+            thisPart.SetLock(true);
+        }
+        
         isAccepted = true;
         PartColorCheck();
     }

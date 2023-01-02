@@ -13,9 +13,10 @@ public class InventoryManager : MonoBehaviour
     {
         if (item)
         {
-            currentItems.Add(item);
-            item.SetupItem();
-            NotifyAdd(item);
+            GameItem newItem = Instantiate(item) as GameItem;
+            currentItems.Add(newItem);
+            newItem.SetupItem();
+            NotifyAdd(newItem);
         }
     }
 

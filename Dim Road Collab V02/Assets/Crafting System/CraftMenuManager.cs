@@ -280,7 +280,7 @@ public class CraftMenuManager : MonoBehaviour
         destinationHolder.UnacceptPart();
 
         //unaccept all parts in row and in slot if there are any
-        currentPartRow.BroadcastMessage("UnacceptPart");
+        currentPartRow.BroadcastMessage("UnAcceptPart");
         /*
         foreach (Transform child in currentPartRow.transform)
         {
@@ -392,6 +392,8 @@ public class CraftMenuManager : MonoBehaviour
 
     public void AddPart(GameObject partRow, GameItem hostItem, GamePart thisPart)
     {
+        int currentRowIndex = currentRowNumber - 1;
+        GamePart acceptedRowPart = acceptedParts[currentRowIndex].acceptedPart;
         GameObject p = Instantiate(itemPartPrefab, partRow.transform);
         currentRowItemParts.Add(p);
         currentRowCells.Add(p);
@@ -403,6 +405,11 @@ public class CraftMenuManager : MonoBehaviour
         ip.image.sprite = thisPart.GetSprite();
         ip.itemCard = itemCard;
         ip.cardHolder = cardHolder;
+        if (acceptedRowPart)
+        {
+            if (acceptedRowPart == thisPart)
+                ip.isAccepted = true;
+        }
         ip.PartColorCheck();
     }
 }
