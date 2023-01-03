@@ -31,6 +31,21 @@ public class PartSlotButtonHandler : MonoBehaviour, ISelectHandler, IPointerEnte
         }
     }
 
+    void OnEnable()
+    {
+        thisButton = GetComponent<Button>();
+        if (isFirstSelected)
+        {
+            /*
+            GameObject eventObject = GameObject.Find("UI_EventSystem");
+            eventSystem = eventObject.GetComponent<EventSystem>();
+            EventSystem.current.SetSelectedGameObject(this.gameObject);
+            */
+
+            thisButton.Select();
+        }
+    }
+
     
     //when moused over
     public void OnPointerEnter(PointerEventData eventData)

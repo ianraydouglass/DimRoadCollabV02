@@ -268,6 +268,8 @@ MonoBehaviour:
   - {fileID: 300666819}
   conditionsMet: {fileID: 11400000, guid: b306a7982bcc99f428316b9270fa24fa, type: 2}
   conditionsNotMet: {fileID: 11400000, guid: 2671ea80f80165047b15c0c3f83e6448, type: 2}
+  craftConfirmed: {fileID: 11400000, guid: 2272c895a1e68f64a991288f967b07ff, type: 2}
+  cancelCraftConfirmed: {fileID: 11400000, guid: baf45aa579f81d34c95a71db6f3d4c34, type: 2}
 --- !u!1001 &44598060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -873,6 +875,18 @@ MonoBehaviour:
       - m_Target: {fileID: 152040433}
         m_TargetAssemblyTypeName: GameEventHolder, Assembly-CSharp
         m_MethodName: RaiseEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 35437857}
+        m_TargetAssemblyTypeName: CraftMenuManager, Assembly-CSharp
+        m_MethodName: CancelCraft
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2226,6 +2240,7 @@ GameObject:
   - component: {fileID: 463893499}
   - component: {fileID: 463893502}
   - component: {fileID: 463893500}
+  - component: {fileID: 463893503}
   m_Layer: 5
   m_Name: RowPanel (1)
   m_TagString: Untagged
@@ -2285,6 +2300,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 463893498}
   m_CullTransparentMesh: 1
+--- !u!114 &463893503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463893498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e995738addaeee478e2a382eba0b8e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisTransform: {fileID: 463893499}
+  originalPosition: {x: 0, y: 0}
 --- !u!1001 &477349147
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2358,6 +2387,7 @@ GameObject:
   - component: {fileID: 514845674}
   - component: {fileID: 514845677}
   - component: {fileID: 514845675}
+  - component: {fileID: 514845678}
   m_Layer: 5
   m_Name: RowPanel (2)
   m_TagString: Untagged
@@ -2417,6 +2447,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 514845673}
   m_CullTransparentMesh: 1
+--- !u!114 &514845678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514845673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e995738addaeee478e2a382eba0b8e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisTransform: {fileID: 514845674}
+  originalPosition: {x: 0, y: 0}
 --- !u!4 &529238020 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5940768127015105252, guid: f093f0fd6dd56144d8b8a9590ec67c74, type: 3}
@@ -3228,6 +3272,7 @@ GameObject:
   - component: {fileID: 638913702}
   - component: {fileID: 638913705}
   - component: {fileID: 638913703}
+  - component: {fileID: 638913706}
   m_Layer: 5
   m_Name: RowPanel (3)
   m_TagString: Untagged
@@ -3287,6 +3332,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 638913701}
   m_CullTransparentMesh: 1
+--- !u!114 &638913706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 638913701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e995738addaeee478e2a382eba0b8e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisTransform: {fileID: 638913702}
+  originalPosition: {x: 0, y: 0}
 --- !u!1001 &641302802
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7448,6 +7507,7 @@ GameObject:
   - component: {fileID: 1431767237}
   - component: {fileID: 1431767236}
   - component: {fileID: 1431767234}
+  - component: {fileID: 1431767238}
   m_Layer: 5
   m_Name: RowPanel (4)
   m_TagString: Untagged
@@ -7507,6 +7567,20 @@ RectTransform:
   m_AnchoredPosition: {x: 306.73492, y: -144.48752}
   m_SizeDelta: {x: 1099.5278, y: -124.22272}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1431767238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431767233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e995738addaeee478e2a382eba0b8e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisTransform: {fileID: 1431767237}
+  originalPosition: {x: 0, y: 0}
 --- !u!1001 &1436169238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8785,7 +8859,6 @@ GameObject:
   - component: {fileID: 1692490232}
   - component: {fileID: 1692490231}
   - component: {fileID: 1692490230}
-  - component: {fileID: 1692490234}
   - component: {fileID: 1692490235}
   m_Layer: 5
   m_Name: Non-Paused UI Canvas
@@ -8876,34 +8949,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1692490234
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1692490229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94d63eb1819e56a47993a00c1f3e6a0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: e6f469db6fea03a499d6e2208b42a2ef, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 534212855}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &1692490235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8916,7 +8961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d63eb1819e56a47993a00c1f3e6a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 801fb0ea6cdd33e428d6f22533c74a26, type: 2}
+  Event: {fileID: 11400000, guid: baf45aa579f81d34c95a71db6f3d4c34, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
@@ -10706,6 +10751,7 @@ GameObject:
   - component: {fileID: 1960909152}
   - component: {fileID: 1960909155}
   - component: {fileID: 1960909153}
+  - component: {fileID: 1960909156}
   m_Layer: 5
   m_Name: RowPanel
   m_TagString: Untagged
@@ -10765,6 +10811,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960909151}
   m_CullTransparentMesh: 1
+--- !u!114 &1960909156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1960909151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e995738addaeee478e2a382eba0b8e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisTransform: {fileID: 1960909152}
+  originalPosition: {x: 0, y: 0}
 --- !u!1 &1973719785
 GameObject:
   m_ObjectHideFlags: 0
@@ -13059,7 +13119,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.9541668, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

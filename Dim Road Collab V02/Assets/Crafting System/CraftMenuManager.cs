@@ -36,6 +36,8 @@ public class CraftMenuManager : MonoBehaviour
     public List<AcceptedPartHolder> acceptedParts;
     public GameEvent conditionsMet;
     public GameEvent conditionsNotMet;
+    public GameEvent craftConfirmed;
+    public GameEvent cancelCraftConfirmed;
 
     //zero represents the end-cap
     private int row1Position = 0;
@@ -89,6 +91,8 @@ public class CraftMenuManager : MonoBehaviour
         row3Position = 0;
         row4Position = 0;
         row5Position = 0;
+        RowsToStartPositions();
+        UnacceptAllParts();
         currentPartRow = partRow1;
         if (rowCount <= 4)
         {
@@ -252,6 +256,10 @@ public class CraftMenuManager : MonoBehaviour
         if(currentItem)
         {
             ItemPartHolder itemHolder = currentItem.GetComponent<ItemPartHolder>();
+            if (itemHolder.IsOccupied())
+            {
+                return;
+            }
             if(itemHolder.isEndCap)
             {
                 UnacceptPartInRow();
@@ -288,6 +296,15 @@ public class CraftMenuManager : MonoBehaviour
             ItemPartHolder tempHolder
         }
         */
+    }
+
+    public void UnacceptAllParts()
+    {        
+        foreach (AcceptedPartHolder acceptedPartHolder in acceptedParts)
+        {
+            acceptedPartHolder.UnacceptPart();
+            
+        }
     }
     public void AcceptThisPart()
     {
@@ -340,6 +357,28 @@ public class CraftMenuManager : MonoBehaviour
             }
         }
         return true;
+    }
+
+    public void DispenseCraft()
+    {
+        if (PartsSatisfyRecipe())            
+        { 
+
+        }
+    }
+
+    public void CancelCraft()
+    {
+        UnacceptAllParts();
+        cancelCraftConfirmed.Raise();
+    }
+
+    public void RowsToStartPositions()
+    {
+        foreach(GameObject thisPartRow in allPartRows)
+        {
+            thisPartRow.GetComponent<PartRow>().RevertPosition();
+        }
     }
 
     public void RefreshButtons()

@@ -84,4 +84,9 @@ public class ItemPartHolder : MonoBehaviour
             cardHolder.descriptionText.text = hostItem.TellDescription();
         }
     }
+
+    public bool IsOccupied()
+    {
+        return thisPart.IsOccupied();
+    }
 }
