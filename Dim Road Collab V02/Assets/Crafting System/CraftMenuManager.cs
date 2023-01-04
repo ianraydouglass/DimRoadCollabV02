@@ -38,6 +38,7 @@ public class CraftMenuManager : MonoBehaviour
     public GameEvent conditionsNotMet;
     public GameEvent craftConfirmed;
     public GameEvent cancelCraftConfirmed;
+    public PartSlotButtonHandler startingRowButton;
 
     //zero represents the end-cap
     private int row1Position = 0;
@@ -73,6 +74,7 @@ public class CraftMenuManager : MonoBehaviour
 
     public void PrepRecipe(CraftingRecipe recipe)
     {
+        //startingRowButton.SelectThisButton();
         currentItem = null;
         currentRecipe = recipe;
         rowCount = recipe.GetTraitCount();

@@ -270,6 +270,7 @@ MonoBehaviour:
   conditionsNotMet: {fileID: 11400000, guid: 2671ea80f80165047b15c0c3f83e6448, type: 2}
   craftConfirmed: {fileID: 11400000, guid: 2272c895a1e68f64a991288f967b07ff, type: 2}
   cancelCraftConfirmed: {fileID: 11400000, guid: baf45aa579f81d34c95a71db6f3d4c34, type: 2}
+  startingRowButton: {fileID: 1784362182}
 --- !u!1001 &44598060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13119,7 +13120,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.9541668, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

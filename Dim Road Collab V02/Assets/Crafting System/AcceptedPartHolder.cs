@@ -36,6 +36,7 @@ public class AcceptedPartHolder : MonoBehaviour
     {
         if (itemPartObject)
         {
+            itemPartObject.GetComponent<ItemPartHolder>().UnAcceptPart();
             acceptedPart = null;
             Destroy(itemPartObject);
             itemPartObject = null;
