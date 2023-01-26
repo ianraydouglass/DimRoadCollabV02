@@ -22,7 +22,7 @@ public class CraftMenuManager2 : MonoBehaviour
     public List<TextMeshProUGUI> rowBodies = new List<TextMeshProUGUI>();
     public List<GameObject> partSlotButtons = new List<GameObject>();
     public GameObject partSelector;
-    public List<GamePart> currentParts = new List<GamePart>();
+    public GamePart[] currentParts = new GamePart[5];
     public GameObject confirmButton;
 
     public void OpenCraftingMenu(List<CraftingRecipe> incomingRecipes, string stationName)
@@ -105,10 +105,9 @@ public class CraftMenuManager2 : MonoBehaviour
 
     public void PrepRecipe(int i)
     {
-        currentParts.Clear();
+        currentParts = new GamePart[5];
         currentRecipe = recipeCatalog[i];
         int req = currentRecipe.GetTraitCount();
-        currentParts = new List<GamePart>(req);
         currentRecipeIndex = i;
         //set up the recipe navigation to show the current recipe output item image and name
         GameItem currentItem = currentRecipe.GetOutputItem();
@@ -178,10 +177,7 @@ public class CraftMenuManager2 : MonoBehaviour
 
     public void SetPartSubMenu(GameObject slot, PartTrait trait, int listIndex)
     {
-        if ((currentParts.Count -1) >= listIndex)
-        {
-            currentParts[listIndex] = null;
-        }
+        currentParts[listIndex] = null;
         inventoryPanel.SetActive(true);
         foreach (Transform t in inventoryPanel.transform) 
         {
@@ -242,7 +238,7 @@ public class CraftMenuManager2 : MonoBehaviour
 
     public void ReleaseAllParts()
     {
-        currentParts.Clear();
+        currentParts = new GamePart[5];
         foreach (GameObject partSlot in partSlotButtons)
         {
             PartSlotButtonHandler2 slotHandler = partSlot.GetComponent<PartSlotButtonHandler2>();
@@ -258,25 +254,17 @@ public class CraftMenuManager2 : MonoBehaviour
     {
         bool conditionsMet = true;
         int req = currentRecipe.GetTraitCount();
-        int sup = currentParts.Count;
-        if (currentParts.Count == 0)
-        {
-            conditionsMet = false;
-            confirmButton.SetActive(conditionsMet);
-            return;
-        }
+       
 
-        if (req != sup)
-        {
-            conditionsMet = false;
-            confirmButton.SetActive(conditionsMet);
-            return;
-
-        }
         
         for (int i = req - 1; i >= 0; i--)
         {
             PartTrait reqTrait = currentRecipe.GetTraitByIndex(i);
+            if(currentParts[i] == null)
+            {
+                confirmButton.SetActive(false);
+                return;
+            }
             if(currentParts[i].HasTrait(reqTrait))
             {
 
