@@ -15,8 +15,8 @@ MonoBehaviour:
   displayName: Card Contacts (GamePart) Card Body (GamePart) Card Chip (GamePart)
     Scraps
   sprite: {fileID: -1528805341, guid: 10c45068f5dfcfb45bb4f8d481c17819, type: 3}
-  defaultParts:
-  - {fileID: 11400000, guid: ba98a69e3a022dd4c969ae913f70049d, type: 2}
-  - {fileID: 11400000, guid: ef61fcb930634f24e9df9e99a0ed6804, type: 2}
-  - {fileID: 11400000, guid: 3ecab4d56a8d15347adfb021d2e48066, type: 2}
   itemTraits: []
+  contents:
+  - defaultPart: {fileID: 11400000, guid: 6aeed1b3cf1ccfa44b58a65275b3ef0f, type: 2}
+    requiredTrait: {fileID: 11400000, guid: d42c5bbd40144bb46aa507b73ad84fc6, type: 2}
+    purpose: 

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Card Chip
   m_EditorClassIdentifier: 
   sprite: {fileID: 314262063, guid: 09a080b478040614da34488b59d406ec, type: 3}
+  displayName: Card Chip
   bulkValue: 1
   maxHealth: 10
   partTraits:

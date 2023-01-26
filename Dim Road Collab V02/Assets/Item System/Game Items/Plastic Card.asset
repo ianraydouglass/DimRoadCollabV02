@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Plastic Card
   sprite: {fileID: 1650247484, guid: 10c45068f5dfcfb45bb4f8d481c17819, type: 3}
-  defaultParts:
-  - {fileID: 11400000, guid: ef61fcb930634f24e9df9e99a0ed6804, type: 2}
   itemTraits: []
+  contents:
+  - defaultPart: {fileID: 11400000, guid: ef61fcb930634f24e9df9e99a0ed6804, type: 2}
+    requiredTrait: {fileID: 11400000, guid: 3240d058d133e4246a62dd7b757000d2, type: 2}
+    purpose: 

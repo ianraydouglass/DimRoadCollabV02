@@ -17,9 +17,12 @@ MonoBehaviour:
   outputObject: {fileID: 0}
   outputItem: {fileID: 11400000, guid: 7bb0f2ceb6c12bf478491f1076c8fd6c, type: 2}
   requiredTraits:
-  - purpose: Body
+  - defaultPart: {fileID: 11400000, guid: ef61fcb930634f24e9df9e99a0ed6804, type: 2}
     requiredTrait: {fileID: 11400000, guid: c3dcc2c1c17b4144d9ed45a02f4e8e62, type: 2}
-  - purpose: Data
+    purpose: Provides Structure
+  - defaultPart: {fileID: 11400000, guid: ba98a69e3a022dd4c969ae913f70049d, type: 2}
     requiredTrait: {fileID: 11400000, guid: 85737fe06f2e4804cbe613ba969f32cb, type: 2}
-  - purpose: Connection
+    purpose: Holds Key Info
+  - defaultPart: {fileID: 11400000, guid: 3ecab4d56a8d15347adfb021d2e48066, type: 2}
     requiredTrait: {fileID: 11400000, guid: c7960f3e590a4d74ab9b2b32ca81371c, type: 2}
+    purpose: Allows Data Transfer

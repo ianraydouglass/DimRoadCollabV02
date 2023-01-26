@@ -14,8 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Misc. Key Card
   sprite: {fileID: 1938140355, guid: 09a080b478040614da34488b59d406ec, type: 3}
-  defaultParts:
-  - {fileID: 11400000, guid: ef61fcb930634f24e9df9e99a0ed6804, type: 2}
-  - {fileID: 11400000, guid: ba98a69e3a022dd4c969ae913f70049d, type: 2}
-  - {fileID: 11400000, guid: 3ecab4d56a8d15347adfb021d2e48066, type: 2}
   itemTraits: []
+  contents:
+  - defaultPart: {fileID: 11400000, guid: ef61fcb930634f24e9df9e99a0ed6804, type: 2}
+    requiredTrait: {fileID: 11400000, guid: c3dcc2c1c17b4144d9ed45a02f4e8e62, type: 2}
+    purpose: 
+  - defaultPart: {fileID: 11400000, guid: ba98a69e3a022dd4c969ae913f70049d, type: 2}
+    requiredTrait: {fileID: 11400000, guid: 85737fe06f2e4804cbe613ba969f32cb, type: 2}
+    purpose: 
+  - defaultPart: {fileID: 11400000, guid: 3ecab4d56a8d15347adfb021d2e48066, type: 2}
+    requiredTrait: {fileID: 11400000, guid: c7960f3e590a4d74ab9b2b32ca81371c, type: 2}
+    purpose: 

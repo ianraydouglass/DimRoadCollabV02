@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Loose Golden Card
   sprite: {fileID: 109939534, guid: 10c45068f5dfcfb45bb4f8d481c17819, type: 3}
-  defaultParts:
-  - {fileID: 11400000, guid: 22c21e04fd77c8b4dbd2ad224a0a2915, type: 2}
   itemTraits: []
+  contents:
+  - defaultPart: {fileID: 11400000, guid: 22c21e04fd77c8b4dbd2ad224a0a2915, type: 2}
+    requiredTrait: {fileID: 11400000, guid: c7960f3e590a4d74ab9b2b32ca81371c, type: 2}
+    purpose: 

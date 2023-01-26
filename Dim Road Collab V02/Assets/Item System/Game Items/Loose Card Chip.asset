@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Loose Card Chip
   sprite: {fileID: 314262063, guid: 09a080b478040614da34488b59d406ec, type: 3}
-  defaultParts:
-  - {fileID: 11400000, guid: ba98a69e3a022dd4c969ae913f70049d, type: 2}
   itemTraits: []
+  contents:
+  - defaultPart: {fileID: 11400000, guid: ba98a69e3a022dd4c969ae913f70049d, type: 2}
+    requiredTrait: {fileID: 11400000, guid: 85737fe06f2e4804cbe613ba969f32cb, type: 2}
+    purpose: 

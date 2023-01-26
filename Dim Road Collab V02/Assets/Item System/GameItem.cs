@@ -12,30 +12,34 @@ public class GameItem : ScriptableObject
     [Range(0, 1000)]
     private int bulkValue = 1;
 
-    [SerializeField]
-    private List<GamePart> defaultParts = new List<GamePart>();
+
     private List<GamePart> currentParts = new List<GamePart>();
 
     [SerializeField]
     private List<PartTrait> itemTraits = new List<PartTrait>();
+
+    [SerializeField]
+    private List<PartPurposeSlot> contents = new List<PartPurposeSlot>();
 
     private bool brokenItem = false;
     private bool removalFlag = false;
     private int maxHealth;
     private int currentHealth;
 
-    public void SetupItem()
+    public void SetUpFromContents()
     {
-        
         int bulkCount = 0;
         int healthCount = 0;
         currentParts.Clear();
-        foreach (GamePart thisPart in defaultParts)
+        foreach (PartPurposeSlot thisPart in contents)
         {
-            GamePart partCopy = Instantiate(thisPart) as GamePart;
+            thisPart.SetForCreation();
+            GamePart defaultPart = thisPart.defaultPart;
+            GamePart partCopy = Instantiate(defaultPart) as GamePart;
             currentParts.Add(partCopy);
-            bulkCount += thisPart.GetBulk();
-            healthCount += thisPart.GetMaxHealth();
+            thisPart.SetPart(partCopy);
+            bulkCount += defaultPart.GetBulk();
+            healthCount += defaultPart.GetMaxHealth();
         }
         if (bulkCount > 1000)
         {
@@ -44,23 +48,22 @@ public class GameItem : ScriptableObject
         bulkValue = bulkCount;
         maxHealth = healthCount;
         currentHealth = healthCount;
-
     }
 
-    public void CraftFromParts(List<GamePart> partsToAdd)
+    public void CraftFromPurpose(List<PartPurposeSlot> partsToAdd)
     {
-        
-        currentParts = partsToAdd;
-        RefreshItem();
+        contents = partsToAdd;
+        SetUpFromContents();
+        ReBuildItem();
     }
 
-    public void RefreshItem()
+    public void ReBuildItem()
     {
         int bulkCount = 0;
         int healthCount = 0;
         int currentHealthCount = 0;
         List<GamePart> partsToRemove = new List<GamePart>();
-        
+
         if (currentParts.Count == 0)
         {
             removalFlag = true;
@@ -68,7 +71,7 @@ public class GameItem : ScriptableObject
         else
         {
             foreach (GamePart thisPart in currentParts)
-            {                
+            {
                 if (thisPart.GetCurrentHealth() <= 0)
                 {
                     partsToRemove.Add(thisPart);
@@ -84,9 +87,10 @@ public class GameItem : ScriptableObject
                 bulkCount = 1000;
             }
         }
-        foreach (GamePart thisPart in defaultParts)
+        //making sure max health is based on contents
+        foreach (PartPurposeSlot thisPart in contents)
         {
-            healthCount += thisPart.GetMaxHealth();
+            healthCount += thisPart.GetPart().GetMaxHealth();
         }
         bulkValue = bulkCount;
         maxHealth = healthCount;
@@ -99,8 +103,30 @@ public class GameItem : ScriptableObject
         {
             //refresh complete
         }
+    }
+
+    public void SetupItem()
+    {
+        SetUpFromContents();
 
     }
+
+    public void CraftFromParts(List<GamePart> partsToAdd)
+    {
+        List<PartPurposeSlot> mysteryContents = new List<PartPurposeSlot>();
+        foreach (GamePart incomingPart in partsToAdd)
+        {
+            PartPurposeSlot mysterySlot = new PartPurposeSlot();
+            mysterySlot.defaultPart = incomingPart;
+            mysteryContents.Add(mysterySlot);
+        }
+        contents = mysteryContents;
+        SetUpFromContents();
+        currentParts = partsToAdd;
+        ReBuildItem();
+    }
+
+    
 
     //only call this if there are parts actually being removed
     //it breaks the item traits by design
@@ -115,6 +141,7 @@ public class GameItem : ScriptableObject
         {
             removalFlag = true;
         }
+        ReBuildItem();
         //refresh complete
         //run cleanup on item manager
 
@@ -138,7 +165,7 @@ public class GameItem : ScriptableObject
     }
     public int GetBulk()
     {
-        RefreshItem();
+        ReBuildItem();
         return bulkValue;
     }
     public bool GetRemovalFlag()
@@ -219,7 +246,7 @@ public class GameItem : ScriptableObject
             {
                 thisPart.DamageThis(damageValue);
             }
-            RefreshItem();
+            ReBuildItem();
         }
     }
 
@@ -248,6 +275,11 @@ public class GameItem : ScriptableObject
             }
         }
         return getPartsWithTrait;
+    }
+
+    public List<PartPurposeSlot> GetContents()
+    {
+        return contents;
     }
 
 }

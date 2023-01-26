@@ -9,6 +9,9 @@ public class GamePart : ScriptableObject
     private Sprite sprite;
 
     [SerializeField]
+    private string displayName;
+
+    [SerializeField]
     [Range(0, 1000)]
     private int bulkValue = 1;
     private bool removalFlag = false;
@@ -23,7 +26,14 @@ public class GamePart : ScriptableObject
 
     public string GetName()
     {
-        return ToString();
+        if (displayName == "")
+        {
+            return ToString();
+        }
+        else
+        {
+            return displayName;
+        }
     }
     public Sprite GetSprite()
     {

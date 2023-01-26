@@ -18,10 +18,14 @@ public class CraftingRecipe : ScriptableObject
     private GameItem outputItem;
     [Header("Limit to 5 slots")]
     [SerializeField]
-    private List<TraitSlot> requiredTraits;
+    private List<PartPurposeSlot> requiredTraits;
 
     public void ConfigureRecipe()
     {
+        if (requiredTraits.Count == 0)
+        {
+            requiredTraits = outputItem.GetContents();
+        }
         //this should remove every entry in the list beyond the 5th one, needs to test
         if (requiredTraits.Count > 5)
         {
@@ -30,6 +34,15 @@ public class CraftingRecipe : ScriptableObject
                 requiredTraits.RemoveAt(i);
             }
             Debug.Log("Requirements too long on " + displayName + " so it was shortened to " + GetTraits());
+        }
+        CheckPurposeText();
+    }
+
+    public void CheckPurposeText()
+    {
+        foreach (PartPurposeSlot thisPart in requiredTraits)
+        {
+            thisPart.SetUpPurpose();
         }
     }
 
@@ -46,7 +59,7 @@ public class CraftingRecipe : ScriptableObject
     public string GetTraits()
     {
         string traitList = "";
-        foreach (TraitSlot thisTrait in requiredTraits)
+        foreach (PartPurposeSlot thisTrait in requiredTraits)
         {
             traitList = traitList + thisTrait.requiredTrait.GetName() + " ";
         }
@@ -60,6 +73,13 @@ public class CraftingRecipe : ScriptableObject
     {
         return requiredTraits[traitIndex].requiredTrait;
     }
-
+    public string GetPurposeByIndex(int purposeIndex)
+    {
+        return requiredTraits[purposeIndex].purpose;
+    }
+    public GameItem GetOutputItem()
+    {
+        return outputItem;
+    }
     
 }

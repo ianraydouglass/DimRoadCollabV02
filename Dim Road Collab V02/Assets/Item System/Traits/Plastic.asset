@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Plastic
   m_EditorClassIdentifier: 
   traitNotes: No trait notes available.
+  defaultPurpose: Multipurpose Material
   itemLevelTrait: 0

@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Contact
   m_EditorClassIdentifier: 
   traitNotes: No trait notes available.
+  defaultPurpose: Allows Data Transfer
   itemLevelTrait: 0

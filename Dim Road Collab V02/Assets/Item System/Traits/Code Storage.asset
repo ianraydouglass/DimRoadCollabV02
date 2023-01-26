@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Code Storage
   m_EditorClassIdentifier: 
   traitNotes: No trait notes available.
+  defaultPurpose: Holds Key Info
   itemLevelTrait: 0

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+
+//this version of the menu manager is out of date as of 1-26-2023
 public class CraftMenuManager : MonoBehaviour
 {
     public InventoryManager inventoryManager;

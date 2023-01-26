@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Magnetic
   m_EditorClassIdentifier: 
   traitNotes: No trait notes available.
+  defaultPurpose: Attracts some metallic objects
   itemLevelTrait: 0

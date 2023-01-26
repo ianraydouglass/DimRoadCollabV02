@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Junk
   m_EditorClassIdentifier: 
   sprite: {fileID: 1657960811, guid: 10c45068f5dfcfb45bb4f8d481c17819, type: 3}
+  displayName: Junk
   bulkValue: 1
   maxHealth: 10
   partTraits:
   - {fileID: 11400000, guid: d42c5bbd40144bb46aa507b73ad84fc6, type: 2}
+  occupied: 0

@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   displayName: Misc. Item
   sprite: {fileID: 1353567428, guid: 10c45068f5dfcfb45bb4f8d481c17819, type: 3}
-  defaultParts:
-  - {fileID: 11400000, guid: 335987ca7a7066c43be575cb4e054b54, type: 2}
   itemTraits: []
+  contents:
+  - defaultPart: {fileID: 11400000, guid: 335987ca7a7066c43be575cb4e054b54, type: 2}
+    requiredTrait: {fileID: 11400000, guid: fbe1297a58baeab46b9ce5255155ca56, type: 2}
+    purpose: 
