@@ -6,6 +6,8 @@ using UnityEngine;
 public class PartTrait : ScriptableObject
 {
     [SerializeField]
+    private string displayName;
+    [SerializeField]
     private string traitNotes = "No trait notes available.";
     [SerializeField]
     private string defaultPurpose = "Purpose Unknown";
@@ -14,7 +16,11 @@ public class PartTrait : ScriptableObject
 
     public string GetName()
     {
-        return ToString();
+        if (displayName == "")
+        {
+            return ToString();
+        }
+        return displayName;
     }
 
     public string GetNotes()

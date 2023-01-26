@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e15dac190cf60d42ae901f83a560e02, type: 3}
   m_Name: Junk
   m_EditorClassIdentifier: 
+  displayName: Junk
   traitNotes: No trait notes available.
+  defaultPurpose: Purpose Unknown
   itemLevelTrait: 0

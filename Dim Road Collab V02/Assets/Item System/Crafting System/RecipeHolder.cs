@@ -13,31 +13,31 @@ public class RecipeHolder : MonoBehaviour
 
     public void NoButtons()
     {
-        buttonLeft.SetActive(false);
-        buttonRight.SetActive(false);
+        buttonLeft.GetComponent<Button>().interactable = false;
+        buttonRight.GetComponent<Button>().interactable = false;
     }
 
     public void DefaultSetup()
     {
-        buttonRight.SetActive(true);
-        buttonLeft.SetActive(false);
+        buttonRight.GetComponent<Button>().interactable = true;
+        buttonLeft.GetComponent<Button>().interactable = false;
     }
 
     public void MaxLeft()
     {
-        buttonRight.SetActive(true);
-        buttonLeft.SetActive(false);
+        buttonRight.GetComponent<Button>().interactable = true;
+        buttonLeft.GetComponent<Button>().interactable = false;
     }
 
     public void MaxRight()
     {
-        buttonRight.SetActive(false);
-        buttonLeft.SetActive(true);
+        buttonRight.GetComponent<Button>().interactable = false;
+        buttonLeft.GetComponent<Button>().interactable = true;
     }
 
     public void MidRange()
     {
-        buttonRight.SetActive(true);
-        buttonLeft.SetActive(true);
+        buttonRight.GetComponent<Button>().interactable = true;
+        buttonLeft.GetComponent<Button>().interactable = true;
     }
 }

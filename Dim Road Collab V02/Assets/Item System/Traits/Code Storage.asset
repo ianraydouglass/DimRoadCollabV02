@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e15dac190cf60d42ae901f83a560e02, type: 3}
   m_Name: Code Storage
   m_EditorClassIdentifier: 
+  displayName: Code Storage
   traitNotes: No trait notes available.
   defaultPurpose: Holds Key Info
   itemLevelTrait: 0
