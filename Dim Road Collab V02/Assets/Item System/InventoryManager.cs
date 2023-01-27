@@ -7,6 +7,7 @@ public class InventoryManager : MonoBehaviour
     public List<GameItem> currentItems = new List<GameItem>();
     public GameObject itemHolder;
     public NotificationManager notificationManager;
+    public GameObject hoistObject;
 
 
     public void AddToInventory(GameItem item)
@@ -43,6 +44,20 @@ public class InventoryManager : MonoBehaviour
             currentItems.Remove(toDrop);
 
         }
+    }
+
+    public void DropItemByItem(GameItem item)
+    {
+        if (!currentItems.Contains(item))
+        {
+            return;
+        }
+        Vector3 dropPosition = hoistObject.transform.position;
+        GameObject i = Instantiate(itemHolder, dropPosition, transform.rotation);
+        ItemObject itemDropping = i.GetComponent<ItemObject>();
+        itemDropping.gameItem = item;
+        itemDropping.ChangeSprite();
+        currentItems.Remove(item);
     }
 
     public void NotifyAdd(GameItem item)

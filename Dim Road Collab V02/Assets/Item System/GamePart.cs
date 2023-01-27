@@ -107,4 +107,12 @@ public class GamePart : ScriptableObject
         removalFlag = true;
         occupied = false;
     }
+
+    public string TellDescription()
+    {
+        string t = "Traits: " + TellTraits() + "\n";
+        t += "Health: " + currentHealth.ToString() + " / " + maxHealth.ToString();
+        return t;
+
+    }
 }

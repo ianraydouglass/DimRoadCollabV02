@@ -81,6 +81,10 @@ public class CraftingRecipe : ScriptableObject
     {
         return outputItem;
     }
+    public string GetDescription()
+    {
+        return outputItem.GetDescription();
+    }
 
 
 }

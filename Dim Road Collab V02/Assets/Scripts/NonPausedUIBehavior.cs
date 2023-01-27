@@ -5,6 +5,8 @@ using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
+
+//for now, most of this script is obsolete since I ditched the controller and keyboard nav method in the craft menu
 public class NonPausedUIBehavior : MonoBehaviour
 {
     public GameEvent menuRight;
@@ -26,7 +28,7 @@ public class NonPausedUIBehavior : MonoBehaviour
     {
         menuAccept.Raise();
     }
-    public void OnCencelMenu()
+    public void OnCancelMenu()
     {
         menuCancel.Raise();
     }

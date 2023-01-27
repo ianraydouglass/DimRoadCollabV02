@@ -11,6 +11,8 @@ public class GameItem : ScriptableObject
     private Sprite sprite;
     [Range(0, 1000)]
     private int bulkValue = 1;
+    [SerializeField]
+    private string displayDescription = "Unknown Use";
 
 
     private List<GamePart> currentParts = new List<GamePart>();
@@ -232,7 +234,7 @@ public class GameItem : ScriptableObject
 
     public string TellDescription()
     {
-        string description = "Item Traits: " + TellTraits() + "\nParts: " + TellParts() + "\nItem Health: " + TellHealth();
+        string description = "Parts: " + TellParts() + "\nItem Health: " + TellHealth();
         return description;
     }
 
@@ -281,5 +283,8 @@ public class GameItem : ScriptableObject
     {
         return contents;
     }
-
+    public string GetDescription()
+    {
+        return displayDescription;
+    }
 }

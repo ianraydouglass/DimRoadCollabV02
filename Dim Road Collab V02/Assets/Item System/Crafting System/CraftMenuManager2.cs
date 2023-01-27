@@ -13,6 +13,8 @@ public class CraftMenuManager2 : MonoBehaviour
     //actual UI panel in-question
     public GameObject craftMenuPanel;
     public InventoryManager inventoryManager;
+    public ItemCardHolder cardHolder;
+    public ItemCardHolder partCard;
     public List<CraftingRecipe> recipeCatalog = new List<CraftingRecipe>();
     public int currentRecipeIndex = 0;
     public CraftingRecipe currentRecipe;
@@ -113,6 +115,7 @@ public class CraftMenuManager2 : MonoBehaviour
         GameItem currentItem = currentRecipe.GetOutputItem();
         recipeHolder.itemImage.sprite = currentItem.GetSprite();
         recipeHolder.titleText.text = currentItem.GetName();
+        cardHolder.DisplayItemInfo(currentRecipe);
         SetRowHeaders();
         SetRowBodies();
         SetSlotButtons();
@@ -179,6 +182,7 @@ public class CraftMenuManager2 : MonoBehaviour
     {
         currentParts[listIndex] = null;
         inventoryPanel.SetActive(true);
+        cardHolder.HideCardContents();
         foreach (Transform t in inventoryPanel.transform) 
         {
             GameObject.Destroy(t.gameObject);
@@ -209,6 +213,7 @@ public class CraftMenuManager2 : MonoBehaviour
                 b.craftMenu = this;
                 b.partHome = slot;
                 b.listIndex = listIndex;
+                b.partCard = partCard;
                 b.CheckColor();
 
                 //instantiate the button prefab with icon
@@ -220,6 +225,8 @@ public class CraftMenuManager2 : MonoBehaviour
     public void AttachPartToSlot(GameObject slot, GamePart part, int listIndex)
     {
         inventoryPanel.SetActive(false);
+        partCard.HideCardContents();
+        cardHolder.DisplayItemInfo(currentRecipe);
         //set the slotted part image to appear with the right sprite
         PartSlotButtonHandler2 slotHandler = slot.GetComponent<PartSlotButtonHandler2>();
         slotHandler.slotPart = part;
@@ -235,6 +242,8 @@ public class CraftMenuManager2 : MonoBehaviour
     {
         part.SetLock(false);
     }
+
+    
 
     public void ReleaseAllParts()
     {

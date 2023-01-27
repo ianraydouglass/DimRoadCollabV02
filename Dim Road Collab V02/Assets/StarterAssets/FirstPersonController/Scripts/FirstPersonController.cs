@@ -115,6 +115,7 @@ namespace StarterAssets
 		[Space(10)]
 		public EventSystem eventSystem;
 		public GameEvent pauseEvent;
+		public GameEvent inventoryEvent;
 
 
 		// cinemachine
@@ -175,6 +176,7 @@ namespace StarterAssets
 			_jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
 			actionSender = GetComponent<HudActionSender>();
+			inventoryManager.hoistObject = hoistPosition;
 		}
 
 		private void Update()
@@ -668,6 +670,12 @@ namespace StarterAssets
 			Cursor.lockState = CursorLockMode.Locked;
 			Cursor.visible = false;
 		}
+
+		public void OnInventory()
+        {
+			HearMenuOpen();
+			inventoryEvent.Raise();
+        }
 
 		
 		//added by Ian D. on 071222

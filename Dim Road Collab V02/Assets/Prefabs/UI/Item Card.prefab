@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8128336559646205023}
   - component: {fileID: 1168370953194983100}
+  - component: {fileID: 8755504405378284827}
   m_Layer: 5
   m_Name: Item Card
   m_TagString: Untagged
@@ -54,6 +55,18 @@ MonoBehaviour:
   titleText: {fileID: 3764112836984998777}
   descriptionText: {fileID: 4557086224319157397}
   cardContents: {fileID: 4942072909551912969}
+--- !u!225 &8755504405378284827
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3115765345372224384}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &3728704831115931447
 GameObject:
   m_ObjectHideFlags: 0
