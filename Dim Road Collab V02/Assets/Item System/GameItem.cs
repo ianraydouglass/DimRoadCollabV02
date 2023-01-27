@@ -72,7 +72,7 @@ public class GameItem : ScriptableObject
         {
             foreach (GamePart thisPart in currentParts)
             {
-                if (thisPart.GetCurrentHealth() <= 0)
+                if (thisPart.GetCurrentHealth() <= 0 || thisPart.GetRemovalFlag())
                 {
                     partsToRemove.Add(thisPart);
                 }

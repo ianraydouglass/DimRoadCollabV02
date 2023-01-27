@@ -278,6 +278,25 @@ public class CraftMenuManager2 : MonoBehaviour
         confirmButton.SetActive(conditionsMet);
     }
 
+    public void ConfirmCraft()
+    {
+        List<GamePart> outGoingParts = new List<GamePart>();
+        for (int i = 5 - 1; i >= 0; i--)
+        {
+            if (currentParts[i] != null)
+            {
+                outGoingParts.Add(currentParts[i]);
+                currentParts[i].UseInCraft();
+            }
+
+        }
+        GameItem outGoingItem = Instantiate(currentRecipe.GetOutputItem()) as GameItem;
+        outGoingItem.CraftFromParts(outGoingParts);
+        inventoryManager.AddToInventory(outGoingItem);
+        inventoryManager.CleanUpItems();
+        PrepRecipe(currentRecipeIndex);
+    }
+
     public int RecipeMaxIndex()
     {
         int indexValue = (recipeCatalog.Count - 1);

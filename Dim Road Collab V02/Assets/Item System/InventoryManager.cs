@@ -64,4 +64,26 @@ public class InventoryManager : MonoBehaviour
         return itemsWithPartTrait;
     }
 
+    public void CleanUpItems()
+    {
+        List<GameItem> itemsRemove = new List<GameItem>();
+        foreach (GameItem item in currentItems)
+        {
+            item.ReBuildItem();
+            if (item.GetRemovalFlag())
+            {
+                itemsRemove.Add(item);
+            }
+        }
+        if (itemsRemove.Count == 0)
+        {
+            return;
+        }
+        foreach(GameItem item in itemsRemove)
+        {
+            currentItems.Remove(item);
+            //notify removal
+        }
+    }
+
 }

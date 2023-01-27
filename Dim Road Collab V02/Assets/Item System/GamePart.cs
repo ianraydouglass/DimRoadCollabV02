@@ -97,4 +97,14 @@ public class GamePart : ScriptableObject
         occupied = lockState;
     }
 
+    public bool GetRemovalFlag()
+    {
+        return removalFlag;
+    }
+
+    public void UseInCraft()
+    {
+        removalFlag = true;
+        occupied = false;
+    }
 }
