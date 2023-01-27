@@ -150,6 +150,7 @@ MonoBehaviour:
   isDebris: 0
   isAnchored: 0
   isItem: 1
+  hasItems: 0
   breakLevel: 1
   body: {fileID: 4815909290362496335}
   simpleInteraction: {fileID: 0}

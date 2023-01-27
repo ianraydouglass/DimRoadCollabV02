@@ -73,6 +73,8 @@ namespace StarterAssets
 		public GameObject stowPosition;
 		public GameObject hoistedObject;
 		public GameObject stowedObject;
+		public CubeSpaceTest hoistTest;
+		public CubeSpaceTest stowTest;
 
 		private Vector3 hoistedObjectOffset;
 		private Vector3 stowedObjectOffset;
@@ -177,6 +179,7 @@ namespace StarterAssets
 			_fallTimeoutDelta = FallTimeout;
 			actionSender = GetComponent<HudActionSender>();
 			inventoryManager.hoistObject = hoistPosition;
+			inventoryManager.hoistTest = hoistTest;
 		}
 
 		private void Update()
@@ -472,6 +475,18 @@ namespace StarterAssets
 				
 			}				
         }
+
+		public bool TestHoistRoom()
+        {
+			bool hasSpace = true;
+			return hasSpace;
+        }
+
+		public bool TestStowRoom()
+        {
+			bool hasSpace = true;
+			return hasSpace;
+		}
 
 		//added by Ian D. on 071122
 		public void OnUseR()

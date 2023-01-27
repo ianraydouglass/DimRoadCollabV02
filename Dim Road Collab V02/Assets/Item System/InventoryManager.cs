@@ -8,6 +8,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject itemHolder;
     public NotificationManager notificationManager;
     public GameObject hoistObject;
+    public CubeSpaceTest hoistTest;
 
 
     public void AddToInventory(GameItem item)

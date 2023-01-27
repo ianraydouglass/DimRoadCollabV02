@@ -10,6 +10,7 @@ public class Interactable : MonoBehaviour
     public bool isDebris;
     public bool isAnchored;
     public bool isItem;
+    public bool hasItems;
     public int breakLevel = 1;
     public Rigidbody body;
     public GameEvent simpleInteraction;
@@ -81,6 +82,10 @@ public class Interactable : MonoBehaviour
             this.body.freezeRotation = true;
             thisCollider.enabled = false;
             Instantiate(siftedVersion, this.transform.position, this.transform.rotation);
+            if(hasItems)
+            {
+                gameObject.SendMessage("ReleaseItems", this.transform.position);
+            }
             Destroy(this.gameObject);
         }
 

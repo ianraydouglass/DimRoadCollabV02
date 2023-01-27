@@ -23,6 +23,15 @@ public class PlayerColliderChecker : MonoBehaviour
         if (collision.collider.gameObject.layer == LayerMask.NameToLayer("Interactable") || collision.collider.gameObject.layer == LayerMask.NameToLayer("Interactable"))
         {
             //Debug.Log("detected a collision on player");
+            Interactable i = collision.collider.gameObject.GetComponent<Interactable>();
+            if (i == null)
+            {
+                return;
+            }
+            if (i.isItem)
+            {
+                return;
+            }
             Rigidbody body = collision.collider.gameObject.GetComponent<Rigidbody>();
             if (body.velocity.magnitude > 0.001)
             {

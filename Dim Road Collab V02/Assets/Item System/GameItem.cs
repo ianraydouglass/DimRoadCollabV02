@@ -90,9 +90,19 @@ public class GameItem : ScriptableObject
             }
         }
         //making sure max health is based on contents
-        foreach (PartPurposeSlot thisPart in contents)
+        if (contents.Count > 0)
         {
-            healthCount += thisPart.GetPart().GetMaxHealth();
+            foreach (PartPurposeSlot thisPart in contents)
+            {
+                healthCount += thisPart.GetPart().GetMaxHealth();
+            }
+        }
+        else
+        {
+            foreach (GamePart thisPart in currentParts)
+            {
+                healthCount += thisPart.GetMaxHealth();
+            }
         }
         bulkValue = bulkCount;
         maxHealth = healthCount;
@@ -167,7 +177,8 @@ public class GameItem : ScriptableObject
     }
     public int GetBulk()
     {
-        ReBuildItem();
+        //something in rebuild item isn't working as intended
+        //ReBuildItem();
         return bulkValue;
     }
     public bool GetRemovalFlag()
