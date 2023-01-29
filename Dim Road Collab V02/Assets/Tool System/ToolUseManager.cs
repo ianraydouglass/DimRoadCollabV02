@@ -28,6 +28,11 @@ public class ToolUseManager : MonoBehaviour
         return toolAction.ToolCheck(targetObject);
     }
 
+    public void SpawnDroppedTool(ToolItem tool)
+    {
+        //check inventory manager for how we do it at drop location
+    }
+
     public int CurrentToolTime()
     {
         if(!heldTool)
@@ -57,6 +62,7 @@ public class ToolUseManager : MonoBehaviour
         {
             //instantiate thing
             currentTools.Remove(outgoingTool);
+            RefreshToolHud();
         }
     }
     public void DropHeldTool()
@@ -69,6 +75,7 @@ public class ToolUseManager : MonoBehaviour
         {
             //instantiate thing
             currentTools.Remove(heldTool);
+            RefreshToolHud();
         }
     }
     public void CycleToolPositive()

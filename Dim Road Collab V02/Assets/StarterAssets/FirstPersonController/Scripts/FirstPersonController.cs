@@ -121,6 +121,7 @@ namespace StarterAssets
 		public GameEvent inventoryEvent;
 		[Space(10)]
 		public ToolUseManager toolManager;
+		private Coroutine toolTime;
 
 		// cinemachine
 		private float _cinemachineTargetPitch;
@@ -500,8 +501,9 @@ namespace StarterAssets
             {
 				return;
             }
+			Debug.Log("toolUseCanceled");
 			toolTimerRunning = false;
-			StopCoroutine("ToolUseTimer");
+			StopCoroutine(toolTime);
 			toolManager.CancelToolUse();
 			//do visual thing for cancel use
 
@@ -525,11 +527,31 @@ namespace StarterAssets
             {
 				Debug.Log("Scroll up on Y");
 				toolManager.CycleToolPositive();
+				if(toolManager.HasTool())
+                {
+					
+					handsEmpty = false;
+                }
+				else
+                {
+					
+					handsEmpty = true;
+                }
             }
 			if (scroll.y < -0.01)
 			{
 				Debug.Log("Scroll down on Y");
 				toolManager.CycleToolNegative();
+				if (toolManager.HasTool())
+				{
+					
+					handsEmpty = false;
+				}
+				else
+				{
+					
+					handsEmpty = true;
+				}
 			}
 
 
@@ -568,7 +590,7 @@ namespace StarterAssets
 				if (toolManager.CanUseTool(interactionTarget))
                 {
 					toolTimerRunning = true;
-					StartCoroutine("ToolUseTimer", toolManager.CurrentToolTime());
+					toolTime = StartCoroutine("ToolUseTimer", toolManager.CurrentToolTime());
 					//start tool timer
                 }
             }
@@ -582,7 +604,7 @@ namespace StarterAssets
 		public void OnInteractR()
         {
 			print("intaractR pressed");
-			if (interactionTarget != null && hoistedObject == null && canInteract == true)
+			if (interactionTarget != null && hoistedObject == null && handsEmpty == true)
             {
 				Interactable handler = interactionTarget.GetComponent<Interactable>();
 				if (handler == null)
@@ -628,7 +650,7 @@ namespace StarterAssets
 
 		public void OnInteractL()
         {
-			if (interactionTarget != null && hoistedObject == null && canInteract == true)
+			if (interactionTarget != null && hoistedObject == null && handsEmpty == true)
             {
 				Interactable handler = interactionTarget.GetComponent<Interactable>();
 				if (handler == null)
