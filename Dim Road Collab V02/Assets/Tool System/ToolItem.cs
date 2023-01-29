@@ -55,4 +55,12 @@ public class ToolItem : ScriptableObject
     {
         return useTime;
     }
+    public List<PartPurposeSlot> GetContents()
+    {
+        return contents;
+    }
+    public string GetDescription()
+    {
+        return displayDescription;
+    }
 }

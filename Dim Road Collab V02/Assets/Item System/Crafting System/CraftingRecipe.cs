@@ -16,15 +16,22 @@ public class CraftingRecipe : ScriptableObject
     [Header("If outut type is item")]
     [SerializeField]
     private GameItem outputItem;
+    [Header("If outut type is tool")]
+    [SerializeField]
+    private ToolItem outputTool;
     [Header("Limit to 5 slots")]
     [SerializeField]
     private List<PartPurposeSlot> requiredTraits;
 
     public void ConfigureRecipe()
     {
-        if (requiredTraits.Count == 0)
+        if (requiredTraits.Count == 0 && outputType == OutputType.Item)
         {
             requiredTraits = outputItem.GetContents();
+        }
+        if (requiredTraits.Count == 0 && outputType == OutputType.Tool)
+        {
+            requiredTraits = outputTool.GetContents();
         }
         //this should remove every entry in the list beyond the 5th one, needs to test
         if (requiredTraits.Count > 5)
@@ -81,9 +88,21 @@ public class CraftingRecipe : ScriptableObject
     {
         return outputItem;
     }
+    public ToolItem GetOutputTool()
+    {
+        return outputTool;
+    }
     public string GetDescription()
     {
-        return outputItem.GetDescription();
+        if(outputItem)
+        {
+            return outputItem.GetDescription();
+        }
+        if(outputTool)
+        {
+            return outputTool.GetDescription();
+        }
+        return "no description available";
     }
 
 

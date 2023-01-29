@@ -12,6 +12,15 @@ public class ItemPuzzleActive : MonoBehaviour
     public string puzzleKey;
 
 
+    void Start()
+    {
+        if (!puzzleMenu)
+        {
+            GameObject menus = GameObject.Find("Non-Paused UI Canvas");
+            puzzleMenu = menus.GetComponent<PuzzleMenuManager>();
+        }
+    }
+
     public void StationActive()
     {
         pauseEvent.Raise();
