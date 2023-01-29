@@ -10,6 +10,7 @@ public class Interactable : MonoBehaviour
     public bool isDebris;
     public bool isAnchored;
     public bool isItem;
+    public bool isTool;
     public bool hasItems;
     public int breakLevel = 1;
     public Rigidbody body;
@@ -128,6 +129,10 @@ public class Interactable : MonoBehaviour
     {
         //so something more sophisticated with this at a later date
         if (isItem)
+        {
+            Destroy(this.gameObject);
+        }
+        if (isTool)
         {
             Destroy(this.gameObject);
         }

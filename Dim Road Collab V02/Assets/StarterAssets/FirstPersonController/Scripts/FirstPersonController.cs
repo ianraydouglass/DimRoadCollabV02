@@ -112,13 +112,15 @@ namespace StarterAssets
 		//added by Ian on 072922
 		[Space(10)]
 		public bool isTesting;
+		private bool toolTimerRunning;
 		public GameEvent breakEvent;
 		public HudActionSender actionSender;
 		[Space(10)]
 		public EventSystem eventSystem;
 		public GameEvent pauseEvent;
 		public GameEvent inventoryEvent;
-
+		[Space(10)]
+		public ToolUseManager toolManager;
 
 		// cinemachine
 		private float _cinemachineTargetPitch;
@@ -238,6 +240,8 @@ namespace StarterAssets
                     {
 						interactionTarget = hitInfo.transform.gameObject;
 						print("Would you like to interact with " + hitInfo.transform.name + "?");
+						CancelUseTool();
+						
 					}
 					
 					
@@ -246,13 +250,15 @@ namespace StarterAssets
 				else
                 {
 					interactionTarget = null;
-                }
+					CancelUseTool();
+				}
 
 			}
 			//we also want to clear the target reference if the ray hits nothign at all
 			else
 			{
 				interactionTarget = null;
+				CancelUseTool();
 			}
 		}
 		//added by Ian D. On 070922
@@ -488,6 +494,48 @@ namespace StarterAssets
 			return hasSpace;
 		}
 
+		public void CancelUseTool()
+        {
+			if(!toolTimerRunning)
+            {
+				return;
+            }
+			toolTimerRunning = false;
+			StopCoroutine("ToolUseTimer");
+			toolManager.CancelToolUse();
+			//do visual thing for cancel use
+
+		}
+
+		public void ConfirmUseTool()
+        {
+			if(!interactionTarget)
+            {
+				return;
+            }
+			toolManager.FinishToolUse(interactionTarget);
+			toolTimerRunning = false;
+		}
+
+		public void OnWheelScroll(InputValue value)
+        {
+			Vector2 scroll = value.Get<Vector2>();
+			
+			if (scroll.y > 0.01)
+            {
+				Debug.Log("Scroll up on Y");
+				toolManager.CycleToolPositive();
+            }
+			if (scroll.y < -0.01)
+			{
+				Debug.Log("Scroll down on Y");
+				toolManager.CycleToolNegative();
+			}
+
+
+		}
+
+		
 		//added by Ian D. on 071122
 		public void OnUseR()
         {
@@ -515,6 +563,20 @@ namespace StarterAssets
 					Debug.Log("trying to pack debris");
                 }
 			}
+			if (interactionTarget != null && toolManager.HasTool())
+            {
+				if (toolManager.CanUseTool(interactionTarget))
+                {
+					toolTimerRunning = true;
+					StartCoroutine("ToolUseTimer", toolManager.CurrentToolTime());
+					//start tool timer
+                }
+            }
+		}
+		IEnumerator ToolUseTimer(int useTime)
+		{
+			yield return new WaitForSeconds(useTime);
+			ConfirmUseTool();
 		}
 
 		public void OnInteractR()
@@ -544,6 +606,15 @@ namespace StarterAssets
 					if (inventoryManager)
                     {
 						inventoryManager.AddToInventory(interactionTarget.GetComponent<ItemObject>().gameItem);
+					}
+					handler.AddToInventory();
+				}
+				if (handler.isTool == true)
+				{
+					
+					if (toolManager)
+					{
+						toolManager.PickupTool(interactionTarget.GetComponent<ToolObject>().toolItem);
 					}
 					handler.AddToInventory();
 				}
