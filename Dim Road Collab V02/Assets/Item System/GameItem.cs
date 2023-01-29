@@ -298,4 +298,17 @@ public class GameItem : ScriptableObject
     {
         return displayDescription;
     }
+
+    public bool HasItemTrait(PartTrait trait)
+    {
+        if(brokenItem)
+        {
+            return false;
+        }
+        if(itemTraits.Contains(trait))
+        {
+            return true;
+        }
+        return false;
+    }
 }

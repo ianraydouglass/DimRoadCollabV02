@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5a940b7df47156d4e96d3057eea11c47, type: 3}
-  m_Name: KeyCard
+  m_Name: KeyCard 1
   m_EditorClassIdentifier: 
-  displayName: Blank Key Card
+  displayName: Key Card #1
   sprite: {fileID: 1938140355, guid: 09a080b478040614da34488b59d406ec, type: 3}
-  displayDescription: Unknown Use
+  displayDescription: Grants access to some areas
   itemTraits:
-  - {fileID: 11400000, guid: 60e94d9d1d22fa144b6d86a6d2dd0c7a, type: 2}
+  - {fileID: 11400000, guid: f04c589ec0e82da40940577dce4eca84, type: 2}
   contents:
   - defaultPart: {fileID: 11400000, guid: ef61fcb930634f24e9df9e99a0ed6804, type: 2}
     requiredTrait: {fileID: 11400000, guid: c3dcc2c1c17b4144d9ed45a02f4e8e62, type: 2}

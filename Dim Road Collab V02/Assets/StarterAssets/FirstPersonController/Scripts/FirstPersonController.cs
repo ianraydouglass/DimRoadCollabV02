@@ -674,6 +674,11 @@ namespace StarterAssets
 			print("intaractL pressed");
 		}
 
+		public void OpenItemRequired()
+        {
+
+        }
+
 		//added by Ian D. on 071222
 		public void OnGoDown()
         {
