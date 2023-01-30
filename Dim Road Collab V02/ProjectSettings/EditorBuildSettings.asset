@@ -4,6 +4,12 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/SampleTitle.unity
+    guid: d17062ada321ec8489d2cdd9a15030a0
+  - enabled: 1
+    path: Assets/Scenes/DimRoadDemo1.unity
+    guid: acbcef7bdcb0f4f4dbf8950b60e2e1a5
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: e753a20966954a24d8e57047ab54f8df, type: 2}

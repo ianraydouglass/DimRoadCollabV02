@@ -183,6 +183,7 @@ namespace StarterAssets
 			actionSender = GetComponent<HudActionSender>();
 			inventoryManager.hoistObject = hoistPosition;
 			inventoryManager.hoistTest = hoistTest;
+			HearMenuClose();
 		}
 
 		private void Update()
