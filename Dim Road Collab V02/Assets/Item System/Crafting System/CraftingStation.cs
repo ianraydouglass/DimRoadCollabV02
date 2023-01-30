@@ -5,9 +5,10 @@ using UnityEngine;
 public class CraftingStation : MonoBehaviour
 {
     public string stationDisplayName = "Basic Crafting Station";
-    public CraftMenuManager craftMenu;
+    
     public CraftMenuManager2 craftMenu2;
     public InventoryManager inventory;
+    public ToolUseManager toolManager;
     public List<CraftingRecipe> stationRecipes = new List<CraftingRecipe>();
     // Start is called before the first frame update
     void Start()
@@ -21,10 +22,7 @@ public class CraftingStation : MonoBehaviour
     //duplication for compatiblity
     public void StationActive()
     {
-        if (craftMenu)
-        {
-            craftMenu.OpenCraftingMenu(stationRecipes);
-        }
+        
         if (craftMenu2)
         {
             craftMenu2.OpenCraftingMenu(stationRecipes, stationDisplayName);
