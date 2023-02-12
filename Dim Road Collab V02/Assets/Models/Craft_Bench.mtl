@@ -1,0 +1,20 @@
+newmtl GContinuous
+map_Kd T:/GitHub/DimRoadCollabV02/Dim Road Collab V02/Assets/Marerials/Textures/Retro Modified/ContinuousPanel3.png
+Kd 1 1 1
+d 1
+
+newmtl BLKContinuous_1
+map_Kd T:/GitHub/DimRoadCollabV02/Dim Road Collab V02/Assets/Marerials/Textures/Retro Modified/ContinuousPanel3.png
+Kd 0.01792208 0.0187013 0.02
+d 1
+
+newmtl GreyStripM
+map_Kd T:/GitHub/DimRoadCollabV02/Dim Road Collab V02/Assets/Marerials/Textures/Retro Modified/16th StripsR.png
+Kd 1 1 1
+d 1
+
+newmtl GreyStripL
+map_Kd T:/GitHub/DimRoadCollabV02/Dim Road Collab V02/Assets/Marerials/Textures/Retro original/SUPPORT_1.png
+Kd 1 1 1
+d 1
+

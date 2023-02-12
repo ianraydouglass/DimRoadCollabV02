@@ -1,0 +1,10 @@
+newmtl YContinuous
+map_Kd T:/GitHub/DimRoadCollabV02/Dim Road Collab V02/Assets/Marerials/Textures/Retro Modified/ContinuousPanel4whitened.png
+Kd 0.8039216 0.7686275 0.5372549
+d 1
+
+newmtl GContinuous
+map_Kd T:/GitHub/DimRoadCollabV02/Dim Road Collab V02/Assets/Marerials/Textures/Retro Modified/ContinuousPanel3.png
+Kd 1 1 1
+d 1
+

@@ -1,0 +1,50 @@
+# ProBuilder 5.0.4
+# https://unity3d.com/unity/features/worldbuilding/probuilder
+# 2/11/2023 10:00:45 PM
+
+mtllib ./Tool_Box.mtl
+o Tool Box
+
+g Tool Box
+v 0.25 0 0.5
+v 0 0 0.5
+v 0.25 0.25 0.5
+v 0 0.25 0.5
+v 0 0 0
+v 0 0.25 0
+v 0.25 0 0
+v 0.25 0.25 0
+
+vt 0.25 0
+vt 0 0
+vt 0.25 0.25
+vt 0 0.25
+vt 0.5 0
+vt 0.5 0.25
+vt -0.25 0
+vt -0.25 0.25
+vt -0.5 0
+vt -0.5 0.25
+vt -0.25 0.5
+vt 0 0.5
+vt 0.25 0.5
+
+vn 0 0 1
+vn -1 0 0
+vn 0 0 -1
+vn 1 0 0
+vn 0 1 0
+vn 0 -1 0
+
+usemtl ToolBoxSides
+f 4/6/2 6/4/2 5/2/2 2/5/2
+f 8/4/4 3/10/4 1/9/4 7/2/4
+
+usemtl ToolBoxTop
+f 8/7/5 6/2/5 4/12/5 3/11/5
+f 1/13/6 2/12/6 5/2/6 7/1/6
+
+usemtl GContinuous
+f 3/3/1 4/4/1 2/2/1 1/1/1
+f 6/4/3 8/8/3 7/7/3 5/2/3
+

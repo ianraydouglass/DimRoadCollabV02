@@ -1,0 +1,15 @@
+newmtl GreyStripS
+map_Kd T:/GitHub/DimRoadCollabV02/Dim Road Collab V02/Assets/Marerials/Textures/Retro Modified/32nd StripsR.png
+Kd 1 1 1
+d 1
+
+newmtl VentGrill1
+map_Kd T:/GitHub/DimRoadCollabV02/Dim Road Collab V02/Assets/Marerials/Textures/Retro Modified/Vent Whitened.png
+Kd 0.4705883 0.5019608 0.482353
+d 1
+
+newmtl GreyStripS_Horizontal
+map_Kd T:/GitHub/DimRoadCollabV02/Dim Road Collab V02/Assets/Marerials/Textures/Retro Modified/32nd Strips.png
+Kd 1 1 1
+d 1
+

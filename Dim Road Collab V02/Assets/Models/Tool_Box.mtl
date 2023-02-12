@@ -1,0 +1,15 @@
+newmtl ToolBoxSides
+map_Kd T:/GitHub/DimRoadCollabV02/Dim Road Collab V02/Assets/Marerials/Textures/Retro Modified/toolBoxSprite.png
+Kd 0.4705883 0.5019608 0.482353
+d 1
+
+newmtl ToolBoxTop
+map_Kd T:/GitHub/DimRoadCollabV02/Dim Road Collab V02/Assets/Marerials/Textures/Retro Modified/toolBoxSpriteR.png
+Kd 0.4705883 0.5019608 0.482353
+d 1
+
+newmtl GContinuous
+map_Kd T:/GitHub/DimRoadCollabV02/Dim Road Collab V02/Assets/Marerials/Textures/Retro Modified/ContinuousPanel3.png
+Kd 1 1 1
+d 1
+

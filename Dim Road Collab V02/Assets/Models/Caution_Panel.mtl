@@ -1,0 +1,10 @@
+newmtl YCauthion
+map_Kd T:/GitHub/DimRoadCollabV02/Dim Road Collab V02/Assets/Marerials/Textures/Retro Modified/WARN_White.png
+Kd 0.8113208 0.699577 0.1122581
+d 1
+
+newmtl GContinuous2
+map_Kd T:/GitHub/DimRoadCollabV02/Dim Road Collab V02/Assets/Marerials/Textures/Retro Modified/ContinuousPanel4whitened.png
+Kd 0.2461017 0.264 0.2550508
+d 1
+
