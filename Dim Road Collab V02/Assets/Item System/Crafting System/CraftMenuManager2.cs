@@ -13,6 +13,7 @@ public class CraftMenuManager2 : MonoBehaviour
     //actual UI panel in-question
     public GameObject craftMenuPanel;
     public InventoryManager inventoryManager;
+    public ToolUseManager toolManager;
     public ItemCardHolder cardHolder;
     public ItemCardHolder partCard;
     public List<CraftingRecipe> recipeCatalog = new List<CraftingRecipe>();
@@ -111,11 +112,23 @@ public class CraftMenuManager2 : MonoBehaviour
         currentRecipe = recipeCatalog[i];
         int req = currentRecipe.GetTraitCount();
         currentRecipeIndex = i;
+        OutputType o = currentRecipe.GetOutputType();
+        if (o == OutputType.Item)
+        {
+            GameItem currentItem = currentRecipe.GetOutputItem();
+            recipeHolder.itemImage.sprite = currentItem.GetSprite();
+            recipeHolder.titleText.text = currentItem.GetName();
+            cardHolder.DisplayItemInfo(currentRecipe);
+        }
+        if (o == OutputType.Tool)
+        {
+            ToolItem currentTool = currentRecipe.GetOutputTool();
+            recipeHolder.itemImage.sprite = currentTool.GetSprite();
+            recipeHolder.titleText.text = currentTool.GetName();
+            cardHolder.DisplayItemInfo(currentRecipe);
+        }
         //set up the recipe navigation to show the current recipe output item image and name
-        GameItem currentItem = currentRecipe.GetOutputItem();
-        recipeHolder.itemImage.sprite = currentItem.GetSprite();
-        recipeHolder.titleText.text = currentItem.GetName();
-        cardHolder.DisplayItemInfo(currentRecipe);
+        
         SetRowHeaders();
         SetRowBodies();
         SetSlotButtons();
@@ -299,9 +312,21 @@ public class CraftMenuManager2 : MonoBehaviour
             }
 
         }
-        GameItem outGoingItem = Instantiate(currentRecipe.GetOutputItem()) as GameItem;
-        outGoingItem.CraftFromParts(outGoingParts);
-        inventoryManager.AddToInventory(outGoingItem);
+
+        OutputType o = currentRecipe.GetOutputType();
+        if (o == OutputType.Item)
+        {
+            GameItem outGoingItem = Instantiate(currentRecipe.GetOutputItem()) as GameItem;
+            outGoingItem.CraftFromParts(outGoingParts);
+            inventoryManager.AddToInventory(outGoingItem);
+        }
+        if (o == OutputType.Tool)
+        {
+            ToolItem outGoingItem = Instantiate(currentRecipe.GetOutputTool()) as ToolItem;
+            outGoingItem.CraftFromParts(outGoingParts);
+            toolManager.PickupTool(outGoingItem);
+        }
+
         inventoryManager.CleanUpItems();
         PrepRecipe(currentRecipeIndex);
     }

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 214f1eb5ef443e648bc2d811b8381896, type: 3}
+  m_Name: Bolt
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 797401228, guid: 09a080b478040614da34488b59d406ec, type: 3}
+  displayName: Bolt
+  bulkValue: 1
+  maxHealth: 10
+  partTraits:
+  - {fileID: 11400000, guid: 9c92dde0ac59f8d498e1fb6cac3d75ea, type: 2}
+  occupied: 0

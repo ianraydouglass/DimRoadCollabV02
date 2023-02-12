@@ -63,6 +63,11 @@ public class CraftingRecipe : ScriptableObject
         return outputObject;
     }
 
+    public OutputType GetOutputType()
+    {
+        return outputType;
+    }
+
     public string GetTraits()
     {
         string traitList = "";

@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 4200348090931481114}
   - component: {fileID: 2634413398228624461}
   - component: {fileID: 2666082760811765320}
-  m_Layer: 0
+  - component: {fileID: 2555450287932358254}
+  - component: {fileID: 4370738483356096919}
+  - component: {fileID: 4902595480728010548}
+  m_Layer: 9
   m_Name: Craft_Bench
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8229807285500557945}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -62,7 +65,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 04caf6570750d1e419b2302796254f3f, type: 2}
-  - {fileID: 2100000, guid: c6c3fb7dcfeae54499c8647f8b85bfac, type: 2}
+  - {fileID: 2100000, guid: 24a1b851e7457b54b9836af4b7fb9d84, type: 2}
   - {fileID: 2100000, guid: 80eefd74d1a1e5640b829c3e15d7ecc0, type: 2}
   - {fileID: 2100000, guid: 80eefd74d1a1e5640b829c3e15d7ecc0, type: 2}
   m_StaticBatchInfo:
@@ -86,3 +89,65 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &2555450287932358254
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8229807285500557945}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8463011841511402993, guid: ae14817543cfe1d4eb516d257dc1e5ac, type: 3}
+--- !u!114 &4370738483356096919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8229807285500557945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a997e4989ae36cb4cbfbab86da678997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isCube: 0
+  isButton: 1
+  isSifted: 0
+  isDebris: 0
+  isAnchored: 0
+  isItem: 0
+  isTool: 0
+  hasItems: 0
+  breakLevel: 1
+  body: {fileID: 0}
+  simpleInteraction: {fileID: 11400000, guid: cef19b569629dfe43a1b5ad97ddc9638, type: 2}
+  thisCollider: {fileID: 2555450287932358254}
+  siftedVersion: {fileID: 0}
+  packedVersion: {fileID: 0}
+  offsetReference: {fileID: 0}
+  offsetValue: {x: 0, y: 0, z: 0}
+  objectIcon: {fileID: 0}
+--- !u!114 &4902595480728010548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8229807285500557945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37281e57769409e4f855beec15a19723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stationDisplayName: Basic Crafting Station
+  craftMenu2: {fileID: 0}
+  inventory: {fileID: 0}
+  toolManager: {fileID: 0}
+  stationRecipes:
+  - {fileID: 11400000, guid: 891136e1deab15c4c971a7274aa74237, type: 2}
+  - {fileID: 11400000, guid: 28319ec23acf9274fbf5392729cf89a0, type: 2}

@@ -25,8 +25,18 @@ public class ItemCardHolder : MonoBehaviour
     public void DisplayItemInfo(CraftingRecipe recipe)
     {
         cardContents.SetActive(true);
-        itemImage.sprite = recipe.GetOutputItem().GetSprite();
-        titleText.text = recipe.GetOutputItem().GetName();
+        OutputType o = recipe.GetOutputType();
+        if (o == OutputType.Item)
+        {
+            itemImage.sprite = recipe.GetOutputItem().GetSprite();
+            titleText.text = recipe.GetOutputItem().GetName();
+        }
+        if (o == OutputType.Tool)
+        {
+            itemImage.sprite = recipe.GetOutputTool().GetSprite();
+            titleText.text = recipe.GetOutputTool().GetName();
+        }
+            
         descriptionText.text = recipe.GetDescription();
 
         //descriptionText.text = item.TellDescription();

@@ -13,6 +13,21 @@ public class CraftingStation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!craftMenu2)
+        {
+            GameObject holder = GameObject.Find("Inventory Holder Temporary");
+            craftMenu2 = holder.GetComponent<CraftMenuManager2>();
+        }
+        if(!inventory)
+        {
+            GameObject holder = GameObject.Find("Inventory Holder Temporary");
+            inventory = holder.GetComponent<InventoryManager>();
+        }
+        if(!toolManager)
+        {
+            GameObject player = GameObject.Find("PlayerCapsule");
+            toolManager = player.GetComponent<ToolUseManager>();
+        }
         foreach(CraftingRecipe thisRecipe in stationRecipes)
         {
             thisRecipe.ConfigureRecipe();
