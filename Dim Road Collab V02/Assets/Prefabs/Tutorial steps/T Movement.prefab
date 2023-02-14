@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Use the Ctrl Key to crouch
+  m_text: Use the W, A, S, and D keys to move
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 8203809014481050568}
   - component: {fileID: 7519733901475436221}
   m_Layer: 5
-  m_Name: Tutorial Crouch
+  m_Name: T Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -320,7 +320,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d63eb1819e56a47993a00c1f3e6a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: ef9e8d433bf627e418c7e07bff67f9b1, type: 2}
+  Event: {fileID: 11400000, guid: 19769d40092d25940852000c40ab15be, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:

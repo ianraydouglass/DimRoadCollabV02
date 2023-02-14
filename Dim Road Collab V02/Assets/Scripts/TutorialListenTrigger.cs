@@ -2,30 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TutorialEntryTrigger : MonoBehaviour
+public class TutorialListenTrigger : MonoBehaviour
 {
     public bool distributed;
     public GameObject tutorialStep;
-    public TutorialManager manager;
-    // Start is called before the first frame update
+    public TutorialManager manager; 
+
     void Start()
     {
-        if(!manager)
+        if (!manager)
         {
             GameObject tutorialPanel = GameObject.Find("Tutorialization Panel");
             manager = tutorialPanel.GetComponent<TutorialManager>();
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void TutorialTrigger()
     {
-        
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player" && !distributed)
+        if (!distributed)
         {
             distributed = true;
             manager.DisplayNotification(tutorialStep);

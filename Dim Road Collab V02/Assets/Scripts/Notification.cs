@@ -8,6 +8,7 @@ public class Notification : MonoBehaviour
 {
     public TextMeshProUGUI textBox;
     public Image image;
+    public float awakeTime = 3f;
 
     void Start()
     {
@@ -21,7 +22,7 @@ public class Notification : MonoBehaviour
 
     IEnumerator DestroyTimer()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(awakeTime);
         DestroyNotification();
     }
 }
