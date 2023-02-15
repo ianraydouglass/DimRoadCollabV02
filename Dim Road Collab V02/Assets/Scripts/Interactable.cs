@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum InteractionType { Basic, Cube, DebrisCube, LooseDebris, Item, Tool, Machine, UtilityCube, Button }
+
 public class Interactable : MonoBehaviour
 {
+    public InteractionType inType;
+    public string displayName;
     public bool isCube;
     public bool isButton;
     public bool isSifted;
