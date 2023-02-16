@@ -144,13 +144,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a997e4989ae36cb4cbfbab86da678997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inType: 4
+  displayName: this item
   isCube: 0
   isButton: 0
   isSifted: 0
   isDebris: 0
   isAnchored: 0
   isItem: 1
+  isTool: 0
   hasItems: 0
+  canTool: 0
   breakLevel: 1
   body: {fileID: 4815909290362496335}
   simpleInteraction: {fileID: 0}

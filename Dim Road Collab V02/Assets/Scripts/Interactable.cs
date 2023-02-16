@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum InteractionType { Basic, Cube, DebrisCube, LooseDebris, Item, Tool, Machine, UtilityCube, Button }
+public enum InteractionType { Basic, Cube, DebrisCube, LooseDebris, Item, Tool, Machine, UtilityCube, Button, OnlyTool}
 
 public class Interactable : MonoBehaviour
 {
     public InteractionType inType;
-    public string displayName;
+    public string displayName = "this object";
     public bool isCube;
     public bool isButton;
     public bool isSifted;
@@ -16,6 +16,7 @@ public class Interactable : MonoBehaviour
     public bool isItem;
     public bool isTool;
     public bool hasItems;
+    public bool canTool;
     public int breakLevel = 1;
     public Rigidbody body;
     public GameEvent simpleInteraction;

@@ -122,6 +122,8 @@ namespace StarterAssets
 		[Space(10)]
 		public ToolUseManager toolManager;
 		private Coroutine toolTime;
+		[Space(10)]
+		public HUDHandler hudHandler;
 
 		// cinemachine
 		private float _cinemachineTargetPitch;
@@ -241,7 +243,8 @@ namespace StarterAssets
 					if (interactionTarget != hitInfo.transform.gameObject)
                     {
 						interactionTarget = hitInfo.transform.gameObject;
-						print("Would you like to interact with " + hitInfo.transform.name + "?");
+						DisplayTarget(hitInfo.transform.gameObject);
+						//print("Would you like to interact with " + hitInfo.transform.name + "?");
 						CancelUseTool();
 						
 					}
@@ -252,6 +255,9 @@ namespace StarterAssets
 				else
                 {
 					interactionTarget = null;
+					//hud handler displays prompts for interactables
+					//we clear it when the target is not valid
+					hudHandler.NoTarget();
 					CancelUseTool();
 				}
 
@@ -260,9 +266,27 @@ namespace StarterAssets
 			else
 			{
 				interactionTarget = null;
+				hudHandler.NoTarget();
 				CancelUseTool();
 			}
 		}
+		//added on 2-16-2023
+		void DisplayTarget(GameObject targetObject)
+        {
+
+			Interactable i = targetObject.GetComponent<Interactable>();
+			if (i == null)
+            {
+				hudHandler.NoTarget();
+				return;
+            }
+			//check if there is a tool in your hands
+			else
+            {
+				hudHandler.TargetObject(i.inType, i.displayName);
+            }
+        }
+
 		//added by Ian D. On 070922
 		void HoldHandler(GameObject holder, Vector3 offset, GameObject cube)
         {
@@ -361,6 +385,7 @@ namespace StarterAssets
 					interactionTarget.transform.parent = hoistPosition.transform;
 					hoistedObject = interactionTarget;
 					interactionTarget = null;
+					hudHandler.NoTarget();
 					if (playerPositionState == positionState.Crouch)
 					{
 						actionSender.crouchingGrab.Raise();
@@ -459,6 +484,7 @@ namespace StarterAssets
 					stowedObject.transform.position = hoistPosition.transform.position;
 					stowedObject.transform.rotation = hoistPosition.transform.rotation;
 					stowedObject = null;
+					hudHandler.NoTarget();
 					if (playerPositionState == positionState.Crouch)
 					{
 						actionSender.crouchingUnStow.Raise();

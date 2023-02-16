@@ -100,11 +100,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a997e4989ae36cb4cbfbab86da678997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inType: 2
+  displayName: Packed Debris
   isCube: 1
   isButton: 0
   isSifted: 0
   isDebris: 1
   isAnchored: 0
+  isItem: 0
+  isTool: 0
+  hasItems: 0
+  canTool: 0
   breakLevel: 1
   body: {fileID: 8058139941618350817}
   simpleInteraction: {fileID: 0}

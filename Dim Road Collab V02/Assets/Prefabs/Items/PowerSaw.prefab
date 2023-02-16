@@ -247,6 +247,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a997e4989ae36cb4cbfbab86da678997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inType: 5
+  displayName: Power Saw
   isCube: 0
   isButton: 0
   isSifted: 0
@@ -255,6 +257,7 @@ MonoBehaviour:
   isItem: 0
   isTool: 1
   hasItems: 0
+  canTool: 0
   breakLevel: 1
   body: {fileID: 3535120674745736166}
   simpleInteraction: {fileID: 0}

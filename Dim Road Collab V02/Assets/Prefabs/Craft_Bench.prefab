@@ -115,6 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a997e4989ae36cb4cbfbab86da678997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inType: 6
+  displayName: Crafting Station
   isCube: 0
   isButton: 1
   isSifted: 0
@@ -123,6 +125,7 @@ MonoBehaviour:
   isItem: 0
   isTool: 0
   hasItems: 0
+  canTool: 0
   breakLevel: 1
   body: {fileID: 0}
   simpleInteraction: {fileID: 11400000, guid: cef19b569629dfe43a1b5ad97ddc9638, type: 2}

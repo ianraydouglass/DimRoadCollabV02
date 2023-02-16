@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+//created by Ian D. on 2-16-2023
 public class HUDHandler : MonoBehaviour
 {
     public TextMeshProUGUI rightText;
@@ -30,10 +31,10 @@ public class HUDHandler : MonoBehaviour
         }
         if (inType == InteractionType.Cube)
         {
-            rightBlock.SetActive(true);
-            leftBlock.SetActive(false);
+            rightBlock.SetActive(false);
+            leftBlock.SetActive(true);
             HoistPrompt();
-            rightText.text += targetName;
+            leftText.text += targetName;
         }
         if (inType == InteractionType.DebrisCube)
         {
@@ -48,32 +49,57 @@ public class HUDHandler : MonoBehaviour
         {
             rightBlock.SetActive(true);
             leftBlock.SetActive(false);
+            PackPrompt();
+            rightText.text += targetName;
         }
         if (inType == InteractionType.Item)
         {
-            rightBlock.SetActive(false);
-            leftBlock.SetActive(true);
+            rightBlock.SetActive(true);
+            leftBlock.SetActive(false);
+            PickUpPrompt();
+            rightText.text += targetName;
         }
         if (inType == InteractionType.Tool)
         {
-            rightBlock.SetActive(false);
-            leftBlock.SetActive(true);
+            rightBlock.SetActive(true);
+            leftBlock.SetActive(false);
+            PickUpPrompt();
+            rightText.text += targetName;
         }
         if (inType == InteractionType.Machine)
         {
             rightBlock.SetActive(false);
             leftBlock.SetActive(true);
+            InteractPrompt();
+            leftText.text += targetName;
         }
         if (inType == InteractionType.UtilityCube)
         {
             rightBlock.SetActive(true);
             leftBlock.SetActive(true);
+            HoistPrompt();
+            InteractPrompt();
+            rightText.text += targetName;
+            leftText.text += targetName;
         }
         if (inType == InteractionType.Button)
         {
             rightBlock.SetActive(false);
             leftBlock.SetActive(true);
+            InteractPrompt();
+            leftText.text += targetName;
         }
+        if (inType == InteractionType.OnlyTool)
+        {
+            //not sure what to do here
+            //maybe nothing at all, and trigger a new method
+            //TargetWithTool might be triggered by the tool handling script then
+        }
+    }
+
+    public void TargetWithTool()
+    {
+
     }
 
     public void NoTarget()
@@ -84,14 +110,14 @@ public class HUDHandler : MonoBehaviour
 
     public void HoistPrompt()
     {
-        rightImage.sprite = leftHold;
-        rightText.text = "Lift ";
+        leftImage.sprite = leftHold;
+        leftText.text = "Lift ";
     }
 
     public void PickUpPrompt()
     {
-        leftImage.sprite = leftClick;
-        leftText.text = "Pick up ";
+        rightImage.sprite = rightClick;
+        rightText.text = "Pick up ";
     }
 
     public void InteractPrompt()
@@ -102,8 +128,8 @@ public class HUDHandler : MonoBehaviour
 
     public void BreakPrompt()
     {
-        leftImage.sprite = rightHold;
-        leftText.text = "Break ";
+        rightImage.sprite = rightHold;
+        rightText.text = "Break ";
     }
 
     public void PackPrompt()
