@@ -148,6 +148,15 @@
                     "processors": "NormalizeVector2",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ClearPrompt",
+                    "type": "Button",
+                    "id": "7607e884-73f0-419d-a7d5-0d930bfccfff",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -566,6 +575,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "WheelScroll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "975abbc9-0d59-4812-91db-cc5517c30956",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ClearPrompt",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

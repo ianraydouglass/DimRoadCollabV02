@@ -308,6 +308,10 @@ MonoBehaviour:
   textBox: {fileID: 5900368658044791118}
   image: {fileID: 4741015436037514232}
   animator: {fileID: 7519733901475436221}
+  isReminder: 0
+  awakeTime: 3
+  stepToAddOnComplete: {fileID: 7337038028662014417, guid: 9d73a23ec76bfd6499ba1ff94d2ee04b, type: 3}
+  tManager: {fileID: 0}
 --- !u!114 &1434390171843145740
 MonoBehaviour:
   m_ObjectHideFlags: 0

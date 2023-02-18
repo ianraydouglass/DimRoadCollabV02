@@ -11,6 +11,10 @@ public class TutorialStep : MonoBehaviour
     public Animator animator;
     public bool isReminder;
     public float awakeTime = 3f;
+    public GameObject stepToAddOnComplete;
+    [Space(10)]
+    public TutorialManager tManager;
+
 
     //method for playing fade-out animation via canvas group
 
@@ -24,6 +28,10 @@ public class TutorialStep : MonoBehaviour
 
     public void Complete()
     {
+        if(stepToAddOnComplete != null && tManager != null)
+        {
+            tManager.DisplayNotification(stepToAddOnComplete);
+        }
         animator.Play("MessageOut");
     }
 

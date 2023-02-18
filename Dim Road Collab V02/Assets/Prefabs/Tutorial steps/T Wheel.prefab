@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: To quit the Game, use the esc key to open the menu.
+  m_text: Use the mouse scroll wheel to equip a tool.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -227,7 +227,7 @@ GameObject:
   - component: {fileID: 8203809014481050568}
   - component: {fileID: 7519733901475436221}
   m_Layer: 5
-  m_Name: T Escape to Help
+  m_Name: T Wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d63eb1819e56a47993a00c1f3e6a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 36a5802a3d1bc7143aad86fcd1e26663, type: 2}
+  Event: {fileID: 11400000, guid: d73e0254c5987ab4ba791d4128910f87, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:

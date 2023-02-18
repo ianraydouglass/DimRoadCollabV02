@@ -119,11 +119,24 @@ namespace StarterAssets
 		public EventSystem eventSystem;
 		public GameEvent pauseEvent;
 		public GameEvent inventoryEvent;
+		public GameEvent clearPromptEvent;
 		[Space(10)]
 		public ToolUseManager toolManager;
 		private Coroutine toolTime;
 		[Space(10)]
 		public HUDHandler hudHandler;
+		public BonkManager bonkManager;
+
+		[Space(10)]
+		public GameEvent tSprintEvent;
+		public GameEvent tLiftEvent;
+		public GameEvent tBreakEvent;
+		public GameEvent tStowEvent;
+		public GameEvent tPullEvent;
+		public GameEvent tToolEvent;
+		public GameEvent tWheelEvent;
+		public GameEvent tItemEvent;
+
 
 		// cinemachine
 		private float _cinemachineTargetPitch;
@@ -280,12 +293,38 @@ namespace StarterAssets
 				hudHandler.NoTarget();
 				return;
             }
+			if (toolManager.HasTool())
+            {
+				if (toolManager.CanUseTool(targetObject))
+                {
+					hudHandler.TargetWithTool(i.displayName);
+                }
+				else
+                {
+					hudHandler.NoTarget();
+                }
+            }
 			//check if there is a tool in your hands
 			else
             {
 				hudHandler.TargetObject(i.inType, i.displayName);
             }
         }
+		//added by Ian D. on 021823
+		void SwapCheck()
+        {
+			if (hoistedObject == null & stowedObject != null)
+            {
+				hudHandler.CubePrompt("stowed");
+				return;
+            }
+			if (hoistedObject != null & stowedObject == null)
+            {
+				hudHandler.CubePrompt("held");
+				return;
+            }
+			hudHandler.CubePrompt("none");
+		}
 
 		//added by Ian D. On 070922
 		void HoldHandler(GameObject holder, Vector3 offset, GameObject cube)
@@ -323,6 +362,7 @@ namespace StarterAssets
 			canInteract = true;
 			handsEmpty = true;
 			Debug.Log("forced to drop object from hands");
+			SwapCheck();
 			
 			if (playerPositionState == positionState.Crouch)
             {
@@ -344,6 +384,7 @@ namespace StarterAssets
 			stowedObject.GetComponent<Interactable>().DropThis();
 			stowedObject = null;
 			Debug.Log("forced to drop object from back");
+			SwapCheck();
 			if (playerPositionState == positionState.Crouch)
 			{
 				actionSender.crouchingDropBack.Raise();
@@ -363,7 +404,7 @@ namespace StarterAssets
 		public void OnHoist()
         {
 			print("hoist pressed");
-			if (interactionTarget != null && hoistedObject == null)
+			if (interactionTarget != null && hoistedObject == null && toolManager.HasTool() == false)
             {
 				Interactable handler = interactionTarget.GetComponent<Interactable>();
 				if (handler == null)
@@ -386,6 +427,7 @@ namespace StarterAssets
 					hoistedObject = interactionTarget;
 					interactionTarget = null;
 					hudHandler.NoTarget();
+					SwapCheck();
 					if (playerPositionState == positionState.Crouch)
 					{
 						actionSender.crouchingGrab.Raise();
@@ -417,6 +459,7 @@ namespace StarterAssets
 					hoistedObject = null;
 					canInteract = true;
 					handsEmpty = true;
+					SwapCheck();
 					if (playerPositionState == positionState.Crouch)
 					{
 						actionSender.crouchingDropFront.Raise();
@@ -441,6 +484,11 @@ namespace StarterAssets
             {
 				if (hoistedObject != null)
                 {
+					if(!bonkManager.StowClear())
+                    {
+						forbiddenAction.Raise();
+						return;
+                    }
 					stowedObject = hoistedObject;
 					Interactable handler = hoistedObject.GetComponent<Interactable>();
 					//hoistedObject.transform.parent = stowPosition.transform;
@@ -451,6 +499,7 @@ namespace StarterAssets
 					hoistedObject = null;
 					canInteract = true;
 					handsEmpty = true;
+					SwapCheck();
 					if (playerPositionState == positionState.Crouch)
 					{
 						actionSender.crouchingStow.Raise();
@@ -477,6 +526,11 @@ namespace StarterAssets
             {
 				if (hoistedObject == null && canInteract == true && handsEmpty == true)
                 {
+					if (!bonkManager.HoldClear())
+					{
+						forbiddenAction.Raise();
+						return;
+					}
 					canInteract = false;
 					handsEmpty = false;
 					hoistedObject = stowedObject;
@@ -485,6 +539,7 @@ namespace StarterAssets
 					stowedObject.transform.rotation = hoistPosition.transform.rotation;
 					stowedObject = null;
 					hudHandler.NoTarget();
+					SwapCheck();
 					if (playerPositionState == positionState.Crouch)
 					{
 						actionSender.crouchingUnStow.Raise();
@@ -522,6 +577,18 @@ namespace StarterAssets
 			return hasSpace;
 		}
 
+		public bool TestCrouchRoom()
+		{
+			bool hasSpace = true;
+			return hasSpace;
+		}
+
+		public bool TestStandRoom()
+		{
+			bool hasSpace = true;
+			return hasSpace;
+		}
+
 		public void CancelUseTool()
         {
 			if(!toolTimerRunning)
@@ -548,8 +615,12 @@ namespace StarterAssets
 
 		public void OnWheelScroll(InputValue value)
         {
+			if (hoistedObject != null)
+            {
+				return;
+            }
 			Vector2 scroll = value.Get<Vector2>();
-			
+			tWheelEvent.Raise();
 			if (scroll.y > 0.01)
             {
 				Debug.Log("Scroll up on Y");
@@ -580,6 +651,10 @@ namespace StarterAssets
 					handsEmpty = true;
 				}
 			}
+			if (interactionTarget != null)
+            {
+				DisplayTarget(interactionTarget);
+            }
 
 
 		}
@@ -602,6 +677,7 @@ namespace StarterAssets
 				{
 					//should disable parts of the debris and instantiate the new stuff
 					handler.SiftThis();
+					tBreakEvent.Raise();
 					
 
 				}
@@ -651,7 +727,7 @@ namespace StarterAssets
                 }
 				if (handler.isItem == true)
                 {
-					print("add item to inventory");
+					tItemEvent.Raise();
 					if (inventoryManager)
                     {
 						inventoryManager.AddToInventory(interactionTarget.GetComponent<ItemObject>().gameItem);
@@ -660,7 +736,7 @@ namespace StarterAssets
 				}
 				if (handler.isTool == true)
 				{
-					
+					tToolEvent.Raise();
 					if (toolManager)
 					{
 						toolManager.PickupTool(interactionTarget.GetComponent<ToolObject>().toolItem);
@@ -688,6 +764,7 @@ namespace StarterAssets
 				}
 				if (handler.isItem == true)
 				{
+					tItemEvent.Raise();
 					print("add item to inventory");
 					if (inventoryManager)
 					{
@@ -700,6 +777,11 @@ namespace StarterAssets
 			
 			print("intaractL pressed");
 		}
+
+		public void OnClearPrompt()
+        {
+			clearPromptEvent.Raise();
+        }
 
 		public void OpenItemRequired()
         {
@@ -745,7 +827,13 @@ namespace StarterAssets
 			}
 			else if (playerPositionState == positionState.Crouch)
 			{
+				if (!bonkManager.StandClear())
+				{
+					forbiddenAction.Raise();
+					return;
+				}
 				playerPositionState = positionState.Stand;
+				AdjustPositionStand();
 				_controller.height = standingHeight;
 				capsuleObject.transform.localScale = new Vector3(.85f, standingScale, .85f);
 				GroundedOffset = standingGroundedOffset;
@@ -756,7 +844,13 @@ namespace StarterAssets
 			}
 			else if (playerPositionState == positionState.Crawl)
 			{
+				if (!bonkManager.CrouchClear())
+				{
+					forbiddenAction.Raise();
+					return;
+				}
 				playerPositionState = positionState.Crouch;
+				AdjustPositionCrawl();
 				_controller.height = crouchingHeight;
 				capsuleObject.transform.localScale = new Vector3(.85f, crouchingScale, .85f);
 				GroundedOffset = croucingGroundedOffset;
@@ -765,6 +859,19 @@ namespace StarterAssets
 				CinemachineCameraTarget.transform.localPosition = newPosition;
 				actionSender.upToCrouchEvent.Raise();
 			}
+		}
+
+		void AdjustPositionStand()
+        {
+			float yFactor = (standingHeight - crouchingHeight + 0.4f) / 2;
+			Vector3 positionshift = new Vector3(0f, yFactor, 0f);
+			this.transform.position += positionshift;
+        }
+		void AdjustPositionCrawl()
+		{
+			float yFactor = (crouchingHeight - crawlingHeight + 0.4f) / 2;
+			Vector3 positionshift = new Vector3(0f, yFactor, 0f);
+			this.transform.position += positionshift;
 		}
 
 		//added by Ian D. on 072922
@@ -815,6 +922,11 @@ namespace StarterAssets
         {
 			HearMenuOpen();
 			inventoryEvent.Raise();
+        }
+
+		public void OnSprint()
+        {
+			tSprintEvent.Raise();
         }
 
 		

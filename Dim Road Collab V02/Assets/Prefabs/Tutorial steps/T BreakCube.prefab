@@ -308,6 +308,10 @@ MonoBehaviour:
   textBox: {fileID: 5900368658044791118}
   image: {fileID: 4741015436037514232}
   animator: {fileID: 7519733901475436221}
+  isReminder: 0
+  awakeTime: 3
+  stepToAddOnComplete: {fileID: 7337038028662014417, guid: 69c1e2d79c318dc458acc9a94fc5dd3b, type: 3}
+  tManager: {fileID: 0}
 --- !u!114 &1434390171843145740
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,7 +324,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94d63eb1819e56a47993a00c1f3e6a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Event: {fileID: 0}
+  Event: {fileID: 11400000, guid: d6d2f1004ab96e245b4fde27b05141e3, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:

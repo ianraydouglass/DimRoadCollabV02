@@ -12,6 +12,13 @@ public class TutorialManager : MonoBehaviour
     public void DisplayNotification(GameObject tutorialStep)
     {
         GameObject n = Instantiate(tutorialStep, tutorialPanel.transform);
+        TutorialStep step = n.GetComponent<TutorialStep>();
+        step.tManager = this;
        
+    }
+
+    public void ClearTutorialNotifications()
+    {
+        tutorialPanel.BroadcastMessage("Complete", SendMessageOptions.DontRequireReceiver);
     }
 }

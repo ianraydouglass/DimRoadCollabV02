@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5012923400196128785}
   - component: {fileID: 5012923400196128798}
   - component: {fileID: 5012923400196128799}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Tutorial zone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
