@@ -6,10 +6,10 @@ public class BonkBox : MonoBehaviour
 {
     public List<GameObject> bonkList = new List<GameObject>();
     
-    //disregard the player, carried objects, phased objects, and trigger zones
+    //disregard the ignore raycast, player, carried objects, phased objects, and trigger zones
     public void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.layer == 6 || collider.gameObject.layer == 10 || collider.gameObject.layer == 12 || collider.gameObject.layer == 13)
+        if (collider.gameObject.layer == 2 || collider.gameObject.layer == 6 || collider.gameObject.layer == 10 || collider.gameObject.layer == 12 || collider.gameObject.layer == 13)
         {
             
         }

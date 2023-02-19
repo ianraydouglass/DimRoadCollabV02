@@ -153,11 +153,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a997e4989ae36cb4cbfbab86da678997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inType: 0
+  displayName: loose debris
   isCube: 0
   isButton: 0
   isSifted: 1
   isDebris: 1
   isAnchored: 0
+  isItem: 0
+  isTool: 0
+  hasItems: 0
+  canTool: 0
   breakLevel: 1
   body: {fileID: 4085957367957615522}
   simpleInteraction: {fileID: 0}
@@ -166,6 +172,7 @@ MonoBehaviour:
   packedVersion: {fileID: 2784980763826087719, guid: b20d249d6915bc049ad131b7d7500bb6, type: 3}
   offsetReference: {fileID: 0}
   offsetValue: {x: 0, y: 0, z: 0}
+  objectIcon: {fileID: 0}
 --- !u!65 &2521662452865137625
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -294,11 +301,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a997e4989ae36cb4cbfbab86da678997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inType: 0
+  displayName: loose debris
   isCube: 0
   isButton: 0
   isSifted: 1
   isDebris: 1
   isAnchored: 0
+  isItem: 0
+  isTool: 0
+  hasItems: 0
+  canTool: 0
   breakLevel: 1
   body: {fileID: 2730565850169564320}
   simpleInteraction: {fileID: 0}
@@ -307,6 +320,7 @@ MonoBehaviour:
   packedVersion: {fileID: 2784980763826087719, guid: b20d249d6915bc049ad131b7d7500bb6, type: 3}
   offsetReference: {fileID: 0}
   offsetValue: {x: 0, y: 0, z: 0}
+  objectIcon: {fileID: 0}
 --- !u!54 &2730565850169564320
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -466,11 +480,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a997e4989ae36cb4cbfbab86da678997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inType: 0
+  displayName: loose debris
   isCube: 0
   isButton: 0
   isSifted: 1
   isDebris: 1
   isAnchored: 0
+  isItem: 0
+  isTool: 0
+  hasItems: 0
+  canTool: 0
   breakLevel: 1
   body: {fileID: 1861604489238122466}
   simpleInteraction: {fileID: 0}
@@ -479,6 +499,7 @@ MonoBehaviour:
   packedVersion: {fileID: 2784980763826087719, guid: b20d249d6915bc049ad131b7d7500bb6, type: 3}
   offsetReference: {fileID: 0}
   offsetValue: {x: 0, y: 0, z: 0}
+  objectIcon: {fileID: 0}
 --- !u!65 &5339808664429376016
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -606,11 +627,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a997e4989ae36cb4cbfbab86da678997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inType: 0
+  displayName: loose debris
   isCube: 0
   isButton: 0
   isSifted: 1
   isDebris: 1
   isAnchored: 0
+  isItem: 0
+  isTool: 0
+  hasItems: 0
+  canTool: 0
   breakLevel: 1
   body: {fileID: 4436956765185229227}
   simpleInteraction: {fileID: 0}
@@ -619,6 +646,7 @@ MonoBehaviour:
   packedVersion: {fileID: 2784980763826087719, guid: b20d249d6915bc049ad131b7d7500bb6, type: 3}
   offsetReference: {fileID: 0}
   offsetValue: {x: 0, y: 0, z: 0}
+  objectIcon: {fileID: 0}
 --- !u!54 &4436956765185229227
 Rigidbody:
   m_ObjectHideFlags: 0

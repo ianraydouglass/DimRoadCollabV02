@@ -152,7 +152,7 @@ public class HUDHandler : MonoBehaviour
         {
             bottomBlock.SetActive(true);
             bottomText.text = "store cube";
-            bottomKeyText.text = "[E]";
+            bottomKeyText.text = "E";
             bottomImage.sprite = bottomKey;
             return;
         }
@@ -161,7 +161,7 @@ public class HUDHandler : MonoBehaviour
         {
             bottomBlock.SetActive(true);
             bottomText.text = "retrieve cube";
-            bottomKeyText.text = "[E]";
+            bottomKeyText.text = "E";
             bottomImage.sprite = bottomKey;
             return;
         }
