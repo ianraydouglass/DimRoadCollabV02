@@ -126,6 +126,7 @@ namespace StarterAssets
 		[Space(10)]
 		public HUDHandler hudHandler;
 		public BonkManager bonkManager;
+		public ProgressHandler progressHandler;
 
 		[Space(10)]
 		public GameEvent tSprintEvent;
@@ -602,6 +603,7 @@ namespace StarterAssets
 			Debug.Log("toolUseCanceled");
 			toolTimerRunning = false;
 			StopCoroutine(toolTime);
+			progressHandler.CancelTool();
 			toolManager.CancelToolUse();
 			//do visual thing for cancel use
 
@@ -698,6 +700,7 @@ namespace StarterAssets
                 {
 					toolTimerRunning = true;
 					toolTime = StartCoroutine("ToolUseTimer", toolManager.CurrentToolTime());
+					progressHandler.ToolProgress(toolManager.CurrentToolTime());
 					//start tool timer
                 }
             }
