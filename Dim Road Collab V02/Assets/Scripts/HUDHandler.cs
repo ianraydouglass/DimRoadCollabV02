@@ -124,7 +124,6 @@ public class HUDHandler : MonoBehaviour
             rightBlock.SetActive(true);
             leftBlock.SetActive(false);
             NeedToolPrompt();
-            rightText.text += targetName;
             //not sure what to do here
             //maybe nothing at all, and trigger a new method
             //TargetWithTool might be triggered by the tool handling script then

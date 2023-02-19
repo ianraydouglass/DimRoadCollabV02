@@ -10,12 +10,14 @@ public class CubePlacementPuzzle : MonoBehaviour
     public GameObject puzzleMaster;
 
 
-    void Start()
+    
+    public void CheckMaster()
     {
         if (!puzzleMaster)
         {
             puzzleMaster = this.gameObject;
         }
+
     }
     public void DetectionList(List<GameObject> newList)
     {
@@ -24,10 +26,15 @@ public class CubePlacementPuzzle : MonoBehaviour
         {
             CheckRequirements();
         }
+        else
+        {
+            PuzzleIncomplete();
+        }
     }
 
     public void CheckRequirements()
     {
+        CheckMaster();
         foreach(GameObject o in triggerObjects)
         {
             CubeProperties p = o.GetComponent<CubeProperties>();

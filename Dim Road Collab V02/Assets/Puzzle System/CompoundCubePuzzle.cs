@@ -8,6 +8,17 @@ public class CompoundCubePuzzle : MonoBehaviour
     public string keyPhrase;
     public string unKeyPhrase;
 
+    void Start()
+    {
+        foreach (CubePlacementPuzzle puzzle in cubePuzzles)
+        {
+            if (puzzle.puzzleMaster == null)
+            {
+                puzzle.puzzleMaster = this.gameObject;
+            }
+        }
+    }
+
     public void CheckPuzzleConditions()
     {
         foreach(CubePlacementPuzzle puzzle in cubePuzzles)

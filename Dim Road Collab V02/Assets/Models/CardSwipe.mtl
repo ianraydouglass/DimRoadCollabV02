@@ -1,0 +1,10 @@
+newmtl GreyStripS_Horizontal
+map_Kd T:/GitHub/DimRoadCollabV02/Dim Road Collab V02/Assets/Marerials/Textures/Retro Modified/32nd Strips.png
+Kd 1 1 1
+d 1
+
+newmtl CardSwipe
+map_Kd T:/GitHub/DimRoadCollabV02/Dim Road Collab V02/Assets/Marerials/Textures/Retro Modified/CardswipePanel.png
+Kd 1 1 1
+d 1
+

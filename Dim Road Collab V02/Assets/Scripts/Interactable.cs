@@ -17,9 +17,13 @@ public class Interactable : MonoBehaviour
     public bool isTool;
     public bool hasItems;
     public bool canTool;
+    public bool concealPrompt;
+    public bool needsPower;
+    public bool hasPower;
     public int breakLevel = 1;
     public Rigidbody body;
     public GameEvent simpleInteraction;
+    public GameEvent noPowerEvent;
     public Collider thisCollider;
     public GameObject siftedVersion;
     public GameObject packedVersion;
@@ -69,10 +73,21 @@ public class Interactable : MonoBehaviour
 
     public void SimpleInteract()
     {
-        if (simpleInteraction != null)
+        if (simpleInteraction != null && PowerCheck())
         {
             simpleInteraction.Raise();
             BroadcastMessage("StationActive");
+        }
+        else if (simpleInteraction != null && !PowerCheck())
+        {
+            if(noPowerEvent != null)
+            {
+                noPowerEvent.Raise();
+            }
+            else
+            {
+                gameObject.BroadcastMessage("AddReminder", SendMessageOptions.DontRequireReceiver);
+            }
         }
         else
         {
@@ -141,5 +156,23 @@ public class Interactable : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public void PowerSwitch(bool isPowered)
+    {
+        if (needsPower)
+        {
+            hasPower = isPowered;
+        }
+
+    }
+
+    public bool PowerCheck()
+    {
+        if (needsPower)
+        {
+            return hasPower;
+        }
+        return true;
     }
 }

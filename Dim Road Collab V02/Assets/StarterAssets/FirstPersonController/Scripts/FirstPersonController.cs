@@ -307,7 +307,11 @@ namespace StarterAssets
 			//check if there is a tool in your hands
 			else
             {
-				hudHandler.TargetObject(i.inType, i.displayName);
+				if (!i.concealPrompt)
+                {
+					hudHandler.TargetObject(i.inType, i.displayName);
+				}
+				//hudHandler.TargetObject(i.inType, i.displayName);
             }
         }
 		//added by Ian D. on 021823
