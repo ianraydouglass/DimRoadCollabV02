@@ -21,7 +21,7 @@ public class LocalStructure : MonoBehaviour
     {
         if (!stability)
         {
-            stability = this.gameObject.GetComponent<SegmentStability>();
+            stability = this.transform.parent.gameObject.GetComponent<SegmentStability>();
         }
     }
 
