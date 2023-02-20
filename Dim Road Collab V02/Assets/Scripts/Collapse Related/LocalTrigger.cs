@@ -18,6 +18,14 @@ public class LocalTrigger : MonoBehaviour
         if (other.gameObject.layer == 7)
         {
             structure.dManager.EnterStructure(structure);
+            structure.PlayerEnter();
+        }
+    }
+    void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == 7)
+        {
+            structure.PlayerExit();
         }
     }
 }

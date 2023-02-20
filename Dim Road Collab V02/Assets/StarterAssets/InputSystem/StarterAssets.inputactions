@@ -492,17 +492,6 @@
                 },
                 {
                     "name": "",
-                    "id": "00bf7b4e-47f7-450b-beaa-e788abfefe28",
-                    "path": "<Keyboard>/x",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "BreakTest",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "1a446bf7-d13f-491d-a8f9-426f4fc2c4c3",
                     "path": "<Keyboard>/p",
                     "interactions": "",

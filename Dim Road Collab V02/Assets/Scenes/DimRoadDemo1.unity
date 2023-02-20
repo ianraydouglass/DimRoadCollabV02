@@ -399,7 +399,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh26012
+  m_Name: pb_Mesh26052
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1716,6 +1716,7 @@ MonoBehaviour:
   maxRegionIntegrity: 0
   currentRegionIntegrity: 0
   regionDangerValue: 0
+  regionDangerLevel: 0
   dManager: {fileID: 0}
   localStructures:
   - {fileID: 6268712604921952139}
@@ -9844,6 +9845,7 @@ MonoBehaviour:
   currentStructure: {fileID: 0}
   eManager: {fileID: 1836063291}
   dangerIndicator: {fileID: 1930143926}
+  debugDisplay: 0
   recentStructures: []
   activeRegions:
   - {fileID: 119982441}
@@ -13675,7 +13677,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 466892488185655243, guid: d41b76d326d8f7e488d943820cc31ed0, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1818119317671956284, guid: d41b76d326d8f7e488d943820cc31ed0, type: 3}
       propertyPath: m_IsActive
@@ -28477,6 +28479,10 @@ PrefabInstance:
     - target: {fileID: 2868272897401037163, guid: d41b76d326d8f7e488d943820cc31ed0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3839998640979811215, guid: d41b76d326d8f7e488d943820cc31ed0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5438268071323408487, guid: d41b76d326d8f7e488d943820cc31ed0, type: 3}
       propertyPath: m_BoundingSphereOverride.w

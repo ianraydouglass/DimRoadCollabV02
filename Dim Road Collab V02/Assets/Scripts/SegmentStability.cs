@@ -7,10 +7,12 @@ public enum SegmentState { None, Intact, toDamaged, Damaged, toDoomed, Doomed, t
 public class SegmentStability : MonoBehaviour
 {
     public Animator animator;
-    public float stability;
+    //public float stability;
     public SegmentState segmentState = SegmentState.Intact;
     private SegmentState pendingState = SegmentState.None;
     public bool isTesting;
+    [Range(0, 3)]
+    public int damageLevel = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +22,24 @@ public class SegmentStability : MonoBehaviour
         {
             animator.SetBool("Testing", true);
         }
+    }
+    public void SetDamageLevel(int dLevel)
+    {
+        if (dLevel <= damageLevel)
+        {
+            return;
+        }
+        if (dLevel > damageLevel)
+        {
+            damageLevel = dLevel;
+            TrueBreak();
+        }
+    }
+
+    public void TrueBreak()
+    {
+        animator.SetInteger("DamageLevel", damageLevel);
+        BroadcastMessage("Damage", damageLevel, SendMessageOptions.DontRequireReceiver);
     }
 
    
@@ -78,6 +98,10 @@ public class SegmentStability : MonoBehaviour
 
     public void BreakComplete()
     {
+        if (!isTesting)
+        {
+            return;
+        }
         if (segmentState == SegmentState.toDamaged)
         {
             if (pendingState == SegmentState.toDoomed)

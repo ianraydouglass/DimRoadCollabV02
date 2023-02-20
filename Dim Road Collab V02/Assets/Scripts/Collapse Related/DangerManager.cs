@@ -26,6 +26,8 @@ public class DangerManager : MonoBehaviour
     public EndingManager eManager;
     public GameObject dangerIndicator;
     private Coroutine damageTimer;
+    private bool timerRunning;
+    public bool debugDisplay;
 
     public List<LocalStructure> recentStructures = new List<LocalStructure>();
     public List<RegionStructure> activeRegions = new List<RegionStructure>();
@@ -41,7 +43,11 @@ public class DangerManager : MonoBehaviour
                 region.SetUpIntegrity();
             }
         }
-        TimerStart();
+        if(!timerRunning)
+        {
+            timerRunning = true;
+            TimerStart();
+        }
     }
 
     public void EnterStructure(LocalStructure structure)
@@ -87,8 +93,12 @@ public class DangerManager : MonoBehaviour
 
     public void TimerReset()
     {
-        StopCoroutine(damageTimer);
+        if(timerRunning)
+        {
+            StopCoroutine(damageTimer);
+        }
         damageTimer = StartCoroutine("DelayDamageTimer", delayTimer);
+        timerRunning = true;
     }
 
     public void DamageStructure(LocalStructure structure, float damageValue)
@@ -100,6 +110,7 @@ public class DangerManager : MonoBehaviour
     IEnumerator DelayDamageTimer(int damTimer)
     {
         yield return new WaitForSeconds(damTimer);
+        timerRunning = false;
         DelayHere();
     }
 
@@ -114,9 +125,42 @@ public class DangerManager : MonoBehaviour
     void DisplayInfo(LocalStructure structure)
     {
         string l = lText;
-        l += structure.currentLocalIntegrity + " / " + structure.maxLocalIntegrity;
         string r = rText;
-        r += structure.region.currentRegionIntegrity + " / " + structure.region.maxRegionIntegrity;
+
+        if (!debugDisplay)
+        {
+            if(structure.region.regionDangerLevel == 0)
+            {
+                r += "Good";
+            }
+            if (structure.region.regionDangerLevel == 1)
+            {
+                r += "Unstable";
+            }
+            if (structure.region.regionDangerLevel >= 2)
+            {
+                r += "Critical";
+            }
+            if (structure.damageLevel == 0)
+            {
+                l += "Good";
+            }
+            if (structure.damageLevel == 0)
+            {
+                l += "Unstable";
+            }
+            if (structure.damageLevel == 0)
+            {
+                l += "Critical";
+            }
+        }
+        else
+        {
+            l += structure.currentLocalIntegrity + " / " + structure.maxLocalIntegrity;
+
+            r += structure.region.currentRegionIntegrity + " / " + structure.region.maxRegionIntegrity;
+        }
+        
         regionText.text = r;
         localText.text = l;
     }

@@ -7,6 +7,7 @@ public class RegionStructure : MonoBehaviour
     public float maxRegionIntegrity = 0f;
     public float currentRegionIntegrity = 0f;
     public float regionDangerValue;
+    public int regionDangerLevel = 0;
 
     public DangerManager dManager;
 
@@ -37,14 +38,23 @@ public class RegionStructure : MonoBehaviour
 
     public void ReceiveRegionDamage(float damageValue)
     {
+        if (maxRegionIntegrity <= 0f)
+        {
+            return;
+        }
         currentRegionIntegrity -= damageValue;
         if (currentRegionIntegrity <= 0f)
         {
-            dManager.CollapseEnd();
+            regionDangerLevel = 2;
+            dManager.SetDanger(true);
+            return;
+            //dManager.CollapseEnd();
         }
         if (currentRegionIntegrity <= regionDangerValue)
         {
+            regionDangerLevel = 1;
             dManager.SetDanger(true);
+            return;
         }
         else
         {
