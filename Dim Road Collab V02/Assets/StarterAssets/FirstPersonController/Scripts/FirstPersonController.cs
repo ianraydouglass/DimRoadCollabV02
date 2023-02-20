@@ -127,6 +127,7 @@ namespace StarterAssets
 		public HUDHandler hudHandler;
 		public BonkManager bonkManager;
 		public ProgressHandler progressHandler;
+		public DangerManager dangerManager;
 
 		[Space(10)]
 		public GameEvent tSprintEvent;
@@ -321,14 +322,27 @@ namespace StarterAssets
 			if (hoistedObject == null & stowedObject != null)
             {
 				hudHandler.CubePrompt("stowed");
+				dangerManager.cubeStowed = true;
+				dangerManager.cubeCarried = false;
 				return;
             }
 			if (hoistedObject != null & stowedObject == null)
             {
 				hudHandler.CubePrompt("held");
+				dangerManager.cubeStowed = false;
+				dangerManager.cubeCarried = true;
 				return;
             }
+			if (hoistedObject != null & stowedObject != null)
+            {
+				hudHandler.CubePrompt("none");
+				dangerManager.cubeStowed = true;
+				dangerManager.cubeCarried = true;
+				return;
+			}
 			hudHandler.CubePrompt("none");
+			dangerManager.cubeStowed = false;
+			dangerManager.cubeCarried = false;
 		}
 
 		//added by Ian D. On 070922
@@ -367,6 +381,7 @@ namespace StarterAssets
 			canInteract = true;
 			handsEmpty = true;
 			Debug.Log("forced to drop object from hands");
+			dangerManager.DropHere();
 			SwapCheck();
 			
 			if (playerPositionState == positionState.Crouch)
@@ -389,6 +404,7 @@ namespace StarterAssets
 			stowedObject.GetComponent<Interactable>().DropThis();
 			stowedObject = null;
 			Debug.Log("forced to drop object from back");
+			dangerManager.DropHere();
 			SwapCheck();
 			if (playerPositionState == positionState.Crouch)
 			{
@@ -464,6 +480,7 @@ namespace StarterAssets
 					hoistedObject = null;
 					canInteract = true;
 					handsEmpty = true;
+					dangerManager.DropHere();
 					SwapCheck();
 					if (playerPositionState == positionState.Crouch)
 					{
@@ -617,6 +634,7 @@ namespace StarterAssets
             }
 			toolManager.FinishToolUse(interactionTarget);
 			toolTimerRunning = false;
+			dangerManager.ToolHere();
 		}
 
 		public void OnWheelScroll(InputValue value)
@@ -684,6 +702,7 @@ namespace StarterAssets
 					//should disable parts of the debris and instantiate the new stuff
 					handler.SiftThis();
 					tBreakEvent.Raise();
+					dangerManager.BreakHere();
 					
 
 				}
