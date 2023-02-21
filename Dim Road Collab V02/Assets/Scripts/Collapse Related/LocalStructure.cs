@@ -15,7 +15,7 @@ public class LocalStructure : MonoBehaviour
     public int damageLevel = 0;
     private Coroutine collapseTimer;
     private bool timerRunning;
-    private int delayTimer = 5;
+    private int delayTimer = 6;
     private bool playerWithin;
 
     void Start()
@@ -65,6 +65,15 @@ public class LocalStructure : MonoBehaviour
             damageLevel = 2;
             stability.SetDamageLevel(2);
             DamageRegion(damageValue);
+            if (playerWithin)
+            {
+                if (timerRunning)
+                {
+                    return;
+                }
+                collapseTimer = StartCoroutine("DelayCollapseTimer", delayTimer);
+            }
+            
             return;
         }
         float h = 10f;
@@ -139,6 +148,14 @@ public class LocalStructure : MonoBehaviour
         {
             damageLevel = 2;
             stability.SetDamageLevel(2);
+            if (playerWithin)
+            {
+                if (timerRunning)
+                {
+                    return;
+                }
+                collapseTimer = StartCoroutine("DelayCollapseTimer", delayTimer);
+            }
 
         }
     }

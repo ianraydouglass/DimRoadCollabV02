@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inType: 2
-  displayName: Packed Debris
+  displayName: Useful Debris
   isCube: 1
   isButton: 0
   isSifted: 0
@@ -112,9 +112,13 @@ MonoBehaviour:
   isTool: 0
   hasItems: 1
   canTool: 0
+  concealPrompt: 0
+  needsPower: 0
+  hasPower: 0
   breakLevel: 1
   body: {fileID: 7869781181319782249}
   simpleInteraction: {fileID: 0}
+  noPowerEvent: {fileID: 0}
   thisCollider: {fileID: 3613476868239875154}
   siftedVersion: {fileID: 3032527019441972675, guid: 2f908f60231660b42ae0ab1bbd11ee54, type: 3}
   packedVersion: {fileID: 0}

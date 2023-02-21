@@ -20,7 +20,7 @@ public class RegionStructure : MonoBehaviour
             maxRegionIntegrity = dManager.defaultRegionIntegrity;
             currentRegionIntegrity = dManager.defaultRegionIntegrity;
         }
-        regionDangerValue = maxRegionIntegrity * 0.1f;
+        regionDangerValue = maxRegionIntegrity * 0.5f;
     }
 
     public void SetLocals(DangerManager dangerManager)
@@ -47,6 +47,7 @@ public class RegionStructure : MonoBehaviour
         {
             regionDangerLevel = 2;
             dManager.SetDanger(true);
+            DoomAll();
             return;
             //dManager.CollapseEnd();
         }
@@ -61,5 +62,17 @@ public class RegionStructure : MonoBehaviour
             dManager.SetDanger(false);
         }
 
+    }
+
+    public void DoomAll()
+    {
+        if (localStructures.Count == 0)
+        {
+            return;
+        }
+        foreach (LocalStructure structure in localStructures)
+        {
+            structure.DoomSegment();
+        }
     }
 }

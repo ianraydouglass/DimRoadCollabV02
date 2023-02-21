@@ -1,0 +1,10 @@
+newmtl GreyStripS_Horizontal
+map_Kd T:/GitHub/DimRoadCollabV02/Dim Road Collab V02/Assets/Marerials/Textures/Retro Modified/32nd Strips.png
+Kd 1 1 1
+d 1
+
+newmtl DGContinuous
+map_Kd T:/GitHub/DimRoadCollabV02/Dim Road Collab V02/Assets/Marerials/Textures/Retro Modified/ContinuousPanel3.png
+Kd 0.2705882 0.282353 0.3019608
+d 1
+
