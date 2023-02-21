@@ -170,6 +170,4 @@ MonoBehaviour:
   itemSpacing: 0.125
   items:
   - {fileID: 11400000, guid: b537996a0c9fc0547afdca600ad85764, type: 2}
-  - {fileID: 11400000, guid: 5b4f09f2ab6ff6642b989db4809529f1, type: 2}
-  - {fileID: 11400000, guid: 726f47f18a251564a8cad7e39f20c41c, type: 2}
   itemHolder: {fileID: 1064985198287274028, guid: b6d756ff4c17c2f42b87337d3bf28cbc, type: 3}

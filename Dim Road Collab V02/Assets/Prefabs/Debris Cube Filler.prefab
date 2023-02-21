@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inType: 1
-  displayName: debris
+  displayName: Solid Debris
   isCube: 1
   isButton: 0
   isSifted: 0
