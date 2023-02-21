@@ -523,7 +523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f3c89af37f455848b3714d8fd1dbbd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 3384891430296362820}
   segmentState: 1
   isTesting: 0
   damageLevel: 0

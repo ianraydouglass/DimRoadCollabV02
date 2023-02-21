@@ -15,7 +15,8 @@ public class LocalStructure : MonoBehaviour
     public int damageLevel = 0;
     private Coroutine collapseTimer;
     private bool timerRunning;
-    private int delayTimer = 10;
+    private int delayTimer = 5;
+    private bool playerWithin;
 
     void Start()
     {
@@ -105,6 +106,14 @@ public class LocalStructure : MonoBehaviour
             currentLocalIntegrity = 0f;
             damageLevel = 2;
             stability.SetDamageLevel(2);
+            if(playerWithin)
+            {
+                if (timerRunning)
+                {
+                    return;
+                }
+                collapseTimer = StartCoroutine("DelayCollapseTimer", delayTimer);
+            }
             return;
         }
         float h = 10f;
@@ -143,6 +152,7 @@ public class LocalStructure : MonoBehaviour
 
     public void PlayerEnter()
     {
+        playerWithin = true;
         if(damageLevel >= 2)
         {
             if(timerRunning)
@@ -150,11 +160,11 @@ public class LocalStructure : MonoBehaviour
                 return;
             }
             collapseTimer = StartCoroutine("DelayCollapseTimer", delayTimer);
-            timerRunning = true;
         }
     }
     public void PlayerExit()
     {
+        playerWithin = false;
         if(damageLevel < 2)
         {
             return;
@@ -178,8 +188,11 @@ public class LocalStructure : MonoBehaviour
 
     IEnumerator DelayCollapseTimer(int cTimer)
     {
+        timerRunning = true;
+        Debug.Log("startingDelayTimer");
         yield return new WaitForSeconds(cTimer);
-        timerRunning = false;
+        
         CollapseSegment();
+        timerRunning = false;
     }
 }

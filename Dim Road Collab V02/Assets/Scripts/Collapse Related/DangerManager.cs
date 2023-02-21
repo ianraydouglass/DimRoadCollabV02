@@ -145,11 +145,11 @@ public class DangerManager : MonoBehaviour
             {
                 l += "Good";
             }
-            if (structure.damageLevel == 0)
+            if (structure.damageLevel == 1)
             {
                 l += "Unstable";
             }
-            if (structure.damageLevel == 0)
+            if (structure.damageLevel >= 2)
             {
                 l += "Critical";
             }
