@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.41155776, g: 0.419216, b: 0.41943973, a: 1}
+  m_IndirectSpecularColor: {r: 0.31172553, g: 0.31173238, b: 0.311732, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10772,8 +10772,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 280.14, y: -196.83}
-  m_SizeDelta: {x: -580.27, y: -413.67}
+  m_AnchoredPosition: {x: 0, y: -196.83}
+  m_SizeDelta: {x: -580, y: -413.67}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &782208117
 CanvasGroup:
@@ -15880,7 +15880,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1091575156
 Transform:
   m_ObjectHideFlags: 0
@@ -27444,17 +27444,16 @@ MonoBehaviour:
   endingGroup: {fileID: 1836063292}
   endEvent: {fileID: 11400000, guid: 6117b15723bb4274992ad85d067ac572, type: 2}
   GameOver: Game Over
-  Ending1: Thank you for trying my game. You managed to clear the main tutorial challenge,
-    but there is another way out. Have you found it?
-  Ending2: 'You found the bonus exit! As an extra surprise, I left a little extra
-    something in the game that I plan to expand in future builds. Here''s a hint:
+  Ending1: Thank you for trying my game. You managed to clear the tutorial, but this
+    isn't the only exit. Did you find anything else?
+  Ending2: 'You found the hidden exit! I left a little extra something in the game
+    that I plan to expand in future builds. Here''s a hint:
 
-    If
-    you saw, "A2" then you know what to do.'
+    If you saw, "A2"
+    then you know what to do.'
   Ending3: You figured it out. Nicely done! I'm planning on adding a proper endless
-    mode to the demo as soon as I have the time, and this would have been the endtrance
-    to skip the tutorial and play the "full" game. It's not ready yet, but let me
-    know if it's something you'd like to see!
+    mode to the demo, and I set this up as a way to skip the tutorial in future builds.
+    I hope you'll give it another try in the future!
 --- !u!225 &1836063292
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -35436,7 +35435,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.6519115, y: 1}
+    m_SensorSize: {x: 1.5923461, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
